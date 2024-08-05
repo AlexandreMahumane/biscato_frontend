@@ -1,51 +1,86 @@
+import { List } from "@phosphor-icons/react";
+
 import React, { useState } from "react";
-import { FaBars, FaTimes } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 export const Header = () => {
-  const [isOpen, setIsOpen] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const toggleMenu = () => {
-    setIsOpen(!isOpen);
+    setIsMenuOpen(!isMenuOpen);
   };
-
   return (
-    <header className="flex justify-between text-white items-center p-5 bg-blue-300 ">
-      <div className="text-lg font-bold">Logo</div>
-      <nav className="sm:hidden flex space-x-4">
-        <ul className="flex space-x-4">
-          <li>
-            <a href="#encontrar-trabalhador" className="hover:text-yellow-500">
-              Encontrar trabalhador
-            </a>
-          </li>
-          <li>
-            <a href="#encontrar-trabalho" className="hover:text-yellow-500">
-              Encontrar trabalho
-            </a>
-          </li>
-        </ul>
-      </nav>
-      <div className="sm:hidden flex space-x-4">
-        <button className="hover:text-yellow-500">Log In</button>
-        <button className="hover:text-yellow-500">Sign Up</button>
+    <nav className="bg-blue-600 text-white py-4">
+      <div className="container mx-auto flex justify-between items-center">
+        <div className=" border-2 border-gray-300 rounded-lg px-2 flex items-center ml-3">
+          <p className="text-lg px-4 hover:text-blue-950"> Logo</p>
+        </div>
+        <div className="hidden md:flex items-center">
+          <Link to="/" className="mr-4 hover:text-blue-950">
+            <span className="text-lg">Main</span>
+          </Link>
+          <Link to="/client" className="mr-4 hover:text-blue-950">
+            <span className="text-lg"> Client</span>
+          </Link>
+          <Link to="/encontrar-trabalhador" className="mr-4 hover:text-blue-950">
+            <span className="text-lg">Encontrar trabalho</span>
+          </Link>
+          <Link to="/encontrar-trabalho" className="hover:text-blue-500">
+          <span className="text-lg">Encontrar trabalho</span>
+        </Link>
+        </div>
+        <div className="md:hidden flex items-center">
+          <button className="text-white focus:outline-none  hover:text-blue-950" onClick={toggleMenu}>
+          <List size={32} />
+          </button>
+        </div>
       </div>
-      <div className="hidden sm:flex items-center">
-        <button onClick={toggleMenu}>
-          {isOpen ? <FaTimes size={24} /> : <FaBars size={24} />}
-        </button>
-      </div>
-      {isOpen && (
-        <div className="absolute top-16 left-0 h-96 w-full bg-gray-800 \ sm:flex flex-col items-center space-y-4 py-5 hidden">
-          <a href="#encontrar-trabalhador" className="hover:text-yellow-500">
-            Encontrar trabalhador
-          </a>
-          <a href="#encontrar-trabalho" className="hover:text-yellow-500">
-            Encontrar trabalho
-          </a>
-          <button className="hover:text-yellow-500">Log In</button>
-          <button className="hover:text-yellow-500">Sign Up</button>
+      {isMenuOpen && (
+        <div className="md:hidden bg-blue-600 text-white py-2 px-4">
+          <div className="flex flex-col gap-2">
+          <Link to="/" className="text-sm block py-1 hover:text-blue-600" onClick={toggleMenu}>
+          Main
+        </Link>
+        <Link to="/client" className="text-sm block py-1 hover:text-blue-600" onClick={toggleMenu}>
+          Client
+        </Link>
+        <Link to="/encontrar-trabalhador" className="text-sm block py-1 hover:text-blue-600" onClick={toggleMenu}>
+          Encontrar trabalhador
+        </Link>
+        <Link to="/encontrar-trabalho" className="text-sm block py-1 hover:text-blue-600" onClick={toggleMenu}>
+          Encontrar trabalho
+        </Link>
+            
+          </div>
         </div>
       )}
-    </header>
+    </nav>
   );
 };
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
