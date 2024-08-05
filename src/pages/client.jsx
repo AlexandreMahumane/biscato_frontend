@@ -12,11 +12,12 @@ export const Client = () => {
                     <h1 className="text-3xl font-bold mb-2">Welcome to Biscato</h1>
                     <p className="text-lg mb-4">Get started</p>
                     <button 
-                        type="submit" 
-                        className="w-full bg-pink-600 text-white px-4 py-2 rounded hover:bg-pink-900"
-                    >
-                        Post Job
-                    </button>
+    type="submit" 
+    className="bg-pink-600 text-white px-3 py-1 rounded hover:bg-pink-900"
+>
+    Post Job
+</button>
+
                 </section>
 
                 <section className="flex flex-col items-center text-center space-y-4">
@@ -25,6 +26,8 @@ export const Client = () => {
                     <p className="text-lg">Phone: 842567840</p>
                     <p className="text-lg">Serviços: 999</p>
                     <p className="text-lg">Avaliação: 
+                        <Star size={22} className="inline text-yellow-500" />
+                        <Star size={22} className="inline text-yellow-500" />
                         <Star size={22} className="inline text-yellow-500" />
                         <Star size={22} className="inline text-yellow-500" />
                         <Star size={22} className="inline text-yellow-500" />
