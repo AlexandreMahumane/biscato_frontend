@@ -22,11 +22,12 @@ export const Header = () => {
           <Link to="/client" className="mr-4 hover:text-blue-950">
             <span className="text-lg"> Client</span>
           </Link>
-          <Link to="/encontrar-trabalhador" className="mr-4 hover:text-blue-950">
-            <span className="text-lg">Encontrar trabalho</span>
+          <Link to="/feedback" className="mr-4 hover:text-blue-950">
+            <span className="text-lg">Feedback</span>
           </Link>
-          <Link to="/encontrar-trabalho" className="hover:text-blue-500">
-          <span className="text-lg">Encontrar trabalho</span>
+          <Link to="/search" className="hover:text-blue-500">
+          <span className="text-lg">        Buscar Freelancers
+          </span>
         </Link>
         </div>
         <div className="md:hidden flex items-center">
@@ -44,14 +45,18 @@ export const Header = () => {
         <Link to="/client" className="text-sm block py-1 hover:text-blue-600" onClick={toggleMenu}>
           Client
         </Link>
-        <Link to="/encontrar-trabalhador" className="text-sm block py-1 hover:text-blue-600" onClick={toggleMenu}>
-          Encontrar trabalhador
+        <Link to="/feedback" className="text-sm block py-1 hover:text-blue-600" onClick={toggleMenu}>
+        Feedback
         </Link>
-        <Link to="/encontrar-trabalho" className="text-sm block py-1 hover:text-blue-600" onClick={toggleMenu}>
-          Encontrar trabalho
+        <Link to="/search" className="text-sm block py-1 hover:text-blue-600" onClick={toggleMenu}>
+        Buscar Freelancers
         </Link>
             
           </div>
+          <div className="auth">
+          <Link to="/login">Login</Link>
+          <Link to="/signup">Cadastrar</Link>
+        </div>
         </div>
       )}
     </nav>

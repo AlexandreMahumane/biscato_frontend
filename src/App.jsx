@@ -1,18 +1,14 @@
+import { RouterProvider } from 'react-router-dom';
+import { route } from './pages/roter'; 
 
-import { RouterProvider } from "react-router-dom"
 import Client from "./pages/client"
 import { Main } from "./pages/main"
-import { route } from "./pages/roter"
-
 function App() {
-
-
   return (
-    <>
-<RouterProvider router={route}/>
-      
-    </>
-  )
+    <RouterProvider router={route} />
+  );
 }
 
-export default App
+export default App;
+
+
