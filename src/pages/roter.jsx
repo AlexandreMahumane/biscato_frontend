@@ -1,8 +1,8 @@
 import { createBrowserRouter } from "react-router-dom";
-import { Client } from "./client";
+import {  ClientRegistrationForm } from "./client";
 import { Main } from "./main";
-import SearchBar from "./SearchFreelancer";
-import FreelancerProfile from "./FreelancerProfile";
+import {SearchFreelancer} from "./SearchFreelancer";
+import {FreelancerProfile} from "./FreelancerProfile";
 
 
 export const route = createBrowserRouter([
@@ -12,11 +12,11 @@ export const route = createBrowserRouter([
     },
     {
      path: "/client",
-     element: <Client/>
+     element: <ClientRegistrationForm/>
     },
     {
-    path: "/seach",
-     element: <SearchBar/>
+    path: "/SearchFreelancer",
+     element: <SearchFreelancer/>
     },
     {
     path: "/freelancerProfile",

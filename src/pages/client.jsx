@@ -1,13 +1,14 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-import { Footer } from '../components/Footer';
-import { Header } from '../components/Header';
+import { Footer } from '../components/footer';
+import { Header } from '../components/header';
 
 const ClientRegistrationForm = () => {
   const [name, setName] = useState('');
   const [phone, setPhone] = useState('');
-  const [password, setPassword] = useState('');
+  const [location, setLocation] = useState('');
+  const [idCard, setIdCard] = useState(''); // New state for ID card
   const [successMessage, setSuccessMessage] = useState('');
   const [showOptions, setShowOptions] = useState(false);
   const navigate = useNavigate();
@@ -15,10 +16,16 @@ const ClientRegistrationForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('/api/register/client', { name, phone, password });
+      const response = await axios.post('/api/register/client', {
+        name,
+        phone,
+        location,
+        idCard // Send ID card number
+      });
       setSuccessMessage('Client registered successfully. Please verify OTP.');
       console.log(response.data);
 
+      // Set a timeout to show options after a few seconds
       setTimeout(() => {
         setShowOptions(true);
       }, 3000);
@@ -64,11 +71,21 @@ const ClientRegistrationForm = () => {
               />
             </label>
             <label className="block mb-4">
-              <span className="text-gray-700">Password:</span>
+              <span className="text-gray-700">Location:</span>
               <input
-                type="password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
+                type="text"
+                value={location}
+                onChange={(e) => setLocation(e.target.value)}
+                required
+                className="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+              />
+            </label>
+            <label className="block mb-4">
+              <span className="text-gray-700">Bilhete de Identidade:</span>
+              <input
+                type="text"
+                value={idCard}
+                onChange={(e) => setIdCard(e.target.value)}
                 required
                 className="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
               />
@@ -77,7 +94,7 @@ const ClientRegistrationForm = () => {
               type="submit"
               className="w-full bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50"
             >
-              Sign up
+              Register
             </button>
           </form>
         ) : (
@@ -105,4 +122,4 @@ const ClientRegistrationForm = () => {
   );
 };
 
-export default ClientRegistrationForm;
+export { ClientRegistrationForm };

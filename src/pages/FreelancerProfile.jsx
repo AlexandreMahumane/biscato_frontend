@@ -1,13 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useNavigate, useParams } from 'react-router-dom';
-import { Header } from '../components/Header/index';
+import { Header } from '../components/header';
+import { Footer } from '../components/footer';
+
 
 const FreelancerProfile = () => {
   const [profile, setProfile] = useState(null);
   const [showOptions, setShowOptions] = useState(false);
   const [successMessage, setSuccessMessage] = useState('Profile loaded successfully.');
-  const { id: freelancerId } = useParams(); 
+  const freelancerId = useParams().id; 
   const navigate = useNavigate(); 
   useEffect(() => {
     const fetchProfile = async () => {
@@ -75,4 +77,4 @@ const FreelancerProfile = () => {
   );
 };
 
-export default FreelancerProfile;
+export{ FreelancerProfile};
