@@ -36,7 +36,7 @@ export const Footer = () => {
                 </div>
           <div className="flex items-center">
                   <GithubLogo className="mr-2" size={22} />
-                  <a href="https://github.com/GeorginaCB/Georgina-Cumbe.git" target="_blank" rel="noopener noreferrer" className="text-blue-950 hover:underline">
+                  <a href="https://github.com/PChimuze" target="_blank" rel="noopener noreferrer" className="text-blue-950 hover:underline">
                     Pedro Chimuze
                   </a>
                 </div>

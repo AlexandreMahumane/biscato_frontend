@@ -19,7 +19,6 @@ const ClientRegistrationForm = () => {
       setSuccessMessage('Client registered successfully. Please verify OTP.');
       console.log(response.data);
 
-      // Exibe as opções após 3 segundos
       setTimeout(() => {
         setShowOptions(true);
       }, 3000);
@@ -55,7 +54,7 @@ const ClientRegistrationForm = () => {
               />
             </label>
             <label className="block mb-4">
-              <span className="text-gray-700">Phone:</span>
+              <span className="text-gray-700">Telefone:</span>
               <input
                 type="text"
                 value={phone}
@@ -78,7 +77,7 @@ const ClientRegistrationForm = () => {
               type="submit"
               className="w-full bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50"
             >
-              Register
+              Sign up
             </button>
           </form>
         ) : (

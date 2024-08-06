@@ -3,6 +3,7 @@ import axios from 'axios';
 import { Header } from '../components/Header';
 import { Footer } from '../components/Footer';
 
+
 const SearchBar = () => {
   const [query, setQuery] = useState('');
   const [category, setCategory] = useState(''); 
@@ -63,7 +64,7 @@ const SearchBar = () => {
           ))}
         </ul>
       </div>
-      <Footer />
+      <Footer/>
     </>
   );
 };
