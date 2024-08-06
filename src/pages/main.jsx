@@ -6,14 +6,12 @@ import { AboutTheApp } from "../components/info";
 export const Main = () =>{
     return(
         <div className="sm:p-2">
-            asdausdassuh
             <Header/>
             <HeroSection/>
             <AboutTheApp/>
             <Footer/>
-
-
-            
         </div>
     );
 }
+
+export default Main

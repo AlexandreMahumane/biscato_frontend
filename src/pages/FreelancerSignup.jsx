@@ -4,11 +4,12 @@ import { useNavigate } from 'react-router-dom';
 import { Footer } from '../components/footer';
 import { Header } from '../components/header';
 
-const ClientRegistrationForm = () => {
+export const FreelancerRegistrationForm = () => {
   const [name, setName] = useState('');
   const [phone, setPhone] = useState('');
-  const [location, setLocation] = useState('');
-  const [idCard, setIdCard] = useState(''); // New state for ID card
+  const [documentType, setDocumentType] = useState('');
+  const [password, setPassword] = useState('');
+  const [documentId, setDocumentId] = useState('');
   const [successMessage, setSuccessMessage] = useState('');
   const [showOptions, setShowOptions] = useState(false);
   const navigate = useNavigate();
@@ -19,8 +20,9 @@ const ClientRegistrationForm = () => {
       const response = await axios.post('/api/register/client', {
         name,
         phone,
-        location,
-        idCard // Send ID card number
+        documentType,
+        documentId,
+        password
       });
       setSuccessMessage('Client registered successfully. Please verify OTP.');
       console.log(response.data);
@@ -49,7 +51,7 @@ const ClientRegistrationForm = () => {
       <div className="container mx-auto p-4">
         {!showOptions ? (
           <form onSubmit={handleSubmit} className="bg-gray-100 p-6 rounded-lg shadow-md max-w-md mx-auto">
-            <h2 className="text-2xl font-semibold text-gray-800 mb-4">Client Registration</h2>
+            <h2 className="text-2xl font-semibold text-gray-800 mb-4">Freelancer Registration</h2>
             <label className="block mb-4">
               <span className="text-gray-700">Name:</span>
               <input
@@ -71,21 +73,29 @@ const ClientRegistrationForm = () => {
               />
             </label>
             <label className="block mb-4">
-              <span className="text-gray-700">Location:</span>
+              <span className="text-gray-700">Tipo de Documento:</span>
+              <select className="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" name="" id="">
+                <option value="id">BI</option>
+                <option value="passport">Passaporte</option>
+              </select>
+
+            </label>
+            <label className="block mb-4">
+              <span className="text-gray-700">Documento Número:</span>
               <input
                 type="text"
-                value={location}
-                onChange={(e) => setLocation(e.target.value)}
+                value={documentId}
+                onChange={(e) => setDocumentId(e.target.value)}
                 required
                 className="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
               />
             </label>
             <label className="block mb-4">
-              <span className="text-gray-700">Bilhete de Identidade:</span>
+              <span className="text-gray-700">Senha:</span>
               <input
-                type="text"
-                value={idCard}
-                onChange={(e) => setIdCard(e.target.value)}
+                type="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
                 required
                 className="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
               />
@@ -122,4 +132,3 @@ const ClientRegistrationForm = () => {
   );
 };
 
-export { ClientRegistrationForm };

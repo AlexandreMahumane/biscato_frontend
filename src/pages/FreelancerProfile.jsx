@@ -5,7 +5,7 @@ import { Header } from '../components/header';
 import { Footer } from '../components/footer';
 
 
-const FreelancerProfile = () => {
+export const FreelancerProfile = () => {
   const [profile, setProfile] = useState(null);
   const [showOptions, setShowOptions] = useState(false);
   const [successMessage, setSuccessMessage] = useState('Profile loaded successfully.');
@@ -77,4 +77,3 @@ const FreelancerProfile = () => {
   );
 };
 
-export{ FreelancerProfile};

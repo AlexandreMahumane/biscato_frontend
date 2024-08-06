@@ -4,8 +4,8 @@ import { Link } from "react-router-dom";
 
 export const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [showLogin, setShowLogin] = useState(false); // State to control login form visibility
-  const [showSignup, setShowSignup] = useState(false); // State to control signup form visibility
+  const [showLogin, setShowLogin] = useState(false); 
+  const [showSignup, setShowSignup] = useState(false);
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -14,13 +14,13 @@ export const Header = () => {
   const handleLoginClick = () => {
     setShowLogin(true);
     setShowSignup(false);
-    toggleMenu(); // Close the mobile menu when an option is selected
+    toggleMenu(); 
   };
 
   const handleSignupClick = () => {
     setShowSignup(true);
     setShowLogin(false);
-    toggleMenu(); // Close the mobile menu when an option is selected
+    toggleMenu();
   };
 
   const handleCloseForms = () => {
@@ -37,17 +37,15 @@ export const Header = () => {
 
         <div className="hidden md:flex items-center">
           <Link to="/" className="mr-4 text-lg hover:text-blue-950">
-            Main
+            Home
           </Link>
-          <Link to="/client" className="mr-4 text-lg hover:text-blue-950">
-            Client
+          <Link to="/signup/client" className="mr-4 text-lg hover:text-blue-950">
+            Encontrar Freelancer
           </Link>
-          <Link to="/feedback" className="mr-4 text-lg hover:text-blue-950">
-            Feedback
+          <Link to="/signup/freelancer" className="mr-4 text-lg hover:text-blue-950">
+            Encontrar Freelancer
           </Link>
-          <Link to="/search" className="text-lg hover:text-blue-950">
-            Buscar Freelancers
-          </Link>
+
           <div className="ml-4">
             <button
               onClick={handleLoginClick}
@@ -55,12 +53,12 @@ export const Header = () => {
             >
               Login
             </button>
-            <button
+            {/* <button
               onClick={handleSignupClick}
               className="bg-blue-700 hover:bg-blue-800 text-white px-4 py-2 rounded-lg ml-2"
             >
               Signup
-            </button>
+            </button> */}
           </div>
         </div>
 
@@ -78,7 +76,7 @@ export const Header = () => {
         <div className="md:hidden bg-blue-600 text-white py-2 px-4">
           <div className="flex flex-col gap-2">
             <Link to="/" className="text-sm block py-1 hover:text-blue-600" onClick={toggleMenu}>
-              Main
+              Home
             </Link>
             <Link to="/client" className="text-sm block py-1 hover:text-blue-600" onClick={toggleMenu}>
               Client
@@ -98,12 +96,12 @@ export const Header = () => {
             >
               Login
             </button>
-            <button
+            {/* <button
               onClick={handleSignupClick}
               className="block py-1 text-sm hover:text-blue-600"
             >
               Signup
-            </button>
+            </button> */}
           </div>
         </div>
       )}
@@ -121,7 +119,7 @@ export const Header = () => {
             <h2 className="text-2xl font-semibold text-gray-800 mb-4">Login</h2>
             <form>
               <label className="block mb-4">
-                <span className="text-gray-700">Email:</span>
+                <span className="text-gray-700">Nome/Telefone</span>
                 <input
                   type="email"
                   required

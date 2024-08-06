@@ -3,7 +3,7 @@ import axios from 'axios';
 import { Header } from '../components/header';
 import { Footer } from '../components/footer';
 
-const SearchFreelancer = () => {
+export const SearchFreelancer = () => {
   const [query, setQuery] = useState('');
   const [category, setCategory] = useState('');
   const [results, setResults] = useState([]);
@@ -126,4 +126,4 @@ const SearchFreelancer = () => {
   );
 };
 
-export { SearchFreelancer };
+
