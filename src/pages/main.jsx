@@ -6,7 +6,6 @@ import { AboutTheApp } from "../components/info";
 export const Main = () =>{
     return(
         <div className="sm:p-2">
-            asdausdassuh
             <Header/>
             <HeroSection/>
             <AboutTheApp/>
