@@ -4,8 +4,8 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-import { Footer } from '../components/footer';
-import { Header } from '../components/header';
+import { Footer } from '../components/footer/index';
+import Header from '../components/header';
 
 const ClientRegistrationForm = () => {
   const [name, setName] = useState('');
@@ -38,7 +38,7 @@ const ClientRegistrationForm = () => {
 
   return (
     <>
-      <Header />
+      <Header/>
       <div className="container mx-auto p-4">
         <form
           onSubmit={handleSubmit}

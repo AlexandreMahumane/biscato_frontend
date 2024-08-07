@@ -46,18 +46,19 @@ export const Footer = () => {
             </div>
           </div>
 
-          <div>
-            <h3 className="text-lg font-bold mb-2">Formas de Pagamento</h3>
-            <div className="flex justify-center space-x-4">
-              <img src="#" alt="Visa" className="w-16" />
-              <img src="#" alt="Mpesa" className="w-16" />
-              <img src="#" alt="Emola" className="w-16" />
-            </div>
-          </div>
+          <div className="w-full">
+      <h3 className="text-lg font-bold">Formas de Pagamento</h3>
+      <div className="flex flex-wrap gap-5 items-center justify-center">
+        <img src="/Logo-1.jpg" alt="Logo" className="h-16" />
+        <img src="/Logo-2.jpg" alt="Logo" className="h-16" />
+        <img src="/Logo-3.jpg" alt="Logo" className="h-16" />
+      </div>
+    </div>
+  </div>
           
       
         </div>
-      </div>
+    
     </footer>
   );
 };
