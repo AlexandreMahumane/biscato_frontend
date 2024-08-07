@@ -64,6 +64,9 @@ export const Header = () => {
           <Link to="/signup/freelancer" className="mr-4 text-lg hover:text-blue-950">
             Encontrar Freelancer
           </Link>
+          <Link to="/freelacerPage" className="mr-4 text-lg hover:text-blue-950">
+            pagina freelacerPage
+          </Link>
 
           <div className="ml-4">
             <button
