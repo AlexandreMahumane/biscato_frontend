@@ -1,3 +1,4 @@
+import Dashboard from "./components/Dashboard"
 import { Main } from "./pages/main"
 
 function App() {
@@ -5,7 +6,7 @@ function App() {
 
   return (
     <>
-      <Main/>
+      <Dashboard/>
     </>
   )
 }
