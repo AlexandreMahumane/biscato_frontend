@@ -9,7 +9,6 @@ Modal.setAppElement('#root');
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [showLogin, setShowLogin] = useState(false);
-  const [showSignup, setShowSignup] = useState(false);
   const [identifier, setIdentifier] = useState('');
   const [password, setPassword] = useState('');
   const navigate = useNavigate();
@@ -20,7 +19,6 @@ const Header = () => {
 
   const handleLoginClick = () => {
     setShowLogin(true);
-    setShowSignup(false);
     toggleMenu();
   };
 
@@ -36,31 +34,13 @@ const Header = () => {
       // console.log('Login successful:', response.data);
 
       navigate("/client");
-      // const response = 'client'
-      // // Redirecionamento com base no tipo de usuário
-      // if (response === 'client') {
-      //   Navigate('/client');}
-      // } else if (response=== 'freelancer') {
-      //   history.push('/freelancerProfile');
-      // } else if (response === 'admin') {
-      //   history.push('/admin');
-      // } else {
-      //   history.push('/');
-      // }
     } catch (error) {
       console.error('Error logging in:', error);
     }
   };
 
-  const handleSignupClick = () => {
-    setShowSignup(true);
-    setShowLogin(false);
-    toggleMenu();
-  };
-
   const handleCloseForms = () => {
     setShowLogin(false);
-    setShowSignup(false);
   };
 
   return (
@@ -70,6 +50,7 @@ const Header = () => {
           <p className="text-lg px-4 hover:text-blue-950 cursor-pointer">Biscato</p>
         </div>
 
+        {/* Links para telas maiores */}
         <div className="hidden md:flex items-center">
           <Link to="/" className="mr-4 text-lg hover:text-blue-950">
             Home
@@ -91,6 +72,7 @@ const Header = () => {
           </div>
         </div>
 
+        {/* Botão de menu para telas menores */}
         <div className="md:hidden flex items-center">
           <button
             className="text-white focus:outline-none hover:text-blue-950"
@@ -101,6 +83,7 @@ const Header = () => {
         </div>
       </div>
 
+      {/* Menu móvel */}
       {isMenuOpen && (
         <div className="md:hidden bg-blue-600 text-white py-2 px-4">
           <div className="flex flex-col gap-2">
@@ -164,56 +147,6 @@ const Header = () => {
                 className="w-full bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50"
               >
                 Login
-              </button>
-            </form>
-          </div>
-        </Modal>
-      )}
-
-      {/* Formulário de Cadastro */}
-      {showSignup && (
-        <Modal
-          isOpen={showSignup}
-          onRequestClose={handleCloseForms}
-          contentLabel="Signup"
-          className="fixed inset-0 flex items-center justify-center bg-gray-800 bg-opacity-75"
-          overlayClassName="fixed inset-0 bg-gray-800 bg-opacity-75"
-        >
-          <div className="bg-white p-6 rounded-lg shadow-md max-w-sm mx-auto relative">
-            <button onClick={handleCloseForms} className="absolute top-2 right-2 text-gray-500 hover:text-gray-700">
-              &times;
-            </button>
-            <h2 className="text-2xl font-semibold text-gray-800 mb-4">Signup</h2>
-            <form>
-              <label className="block mb-4">
-                <span className="text-gray-700">Name:</span>
-                <input
-                  type="text"
-                  required
-                  className="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-                />
-              </label>
-              <label className="block mb-4">
-                <span className="text-gray-700">Email:</span>
-                <input
-                  type="email"
-                  required
-                  className="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-                />
-              </label>
-              <label className="block mb-4">
-                <span className="text-gray-700">Password:</span>
-                <input
-                  type="password"
-                  required
-                  className="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-                />
-              </label>
-              <button
-                type="submit"
-                className="w-full bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50"
-              >
-                Signup
               </button>
             </form>
           </div>
