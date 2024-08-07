@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useNavigate, useParams } from 'react-router-dom';
-import { Header } from '../components/header';
-import { Footer } from '../components/footer';
+import { Footer } from '../components/footer/';
+import Header from '../components/header';
 
 
 export const FreelancerProfile = () => {
