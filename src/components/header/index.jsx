@@ -1,12 +1,12 @@
 import React, { useState } from "react";
-import { useHistory } from "react-router-dom";
 import axios from 'axios';
+import { Link } from 'react-router-dom';
+
 
 export const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [showLogin, setShowLogin] = useState(false);
   const [showSignup, setShowSignup] = useState(false);
-  const history = useHistory(); // Importe e inicialize o useHistory
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
