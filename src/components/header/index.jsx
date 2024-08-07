@@ -1,13 +1,17 @@
 import React, { useState } from "react";
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
+
 
 
 export const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [showLogin, setShowLogin] = useState(false);
   const [showSignup, setShowSignup] = useState(false);
-
+  const [identifier, setIdentifier] = useState('')
+  const [password, setpassword] = useState('')
+const navigate = useNavigate();
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
@@ -20,29 +24,30 @@ export const Header = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    try {
+    // try {
       // Simula uma chamada de autenticação (substitua com sua lógica real)
-      const response = await axios.post('/auth', {
-        identifier,
-        password
-      });
+      // const response = await axios.post('/auth', {
+      //   identifier,
+      //   password
+      // });
 
-      console.log('Login successful:', response.data);
+      // console.log('Login successful:', response.data);
 
-      // Redirecionamento com base no tipo de usuário
-      if (response.data.userType === 'client') {
-        history.push('/client');
-      } else if (response.data.userType === 'freelancer') {
-        history.push('/freelancerProfile');
-      } else if (response.data.userType === 'admin') {
-        history.push('/admin');
-      } else {
-        // Redirecionamento padrão ou lógica adicional aqui
-        history.push('/');
-      }
-    } catch (error) {
-      console.error('Error logging in:', error);
-    }
+      navigate("/client")
+      // const response = 'client'
+      // // Redirecionamento com base no tipo de usuário
+      // if (response === 'client') {
+      //   Navigate('/client');}
+      // } else if (response=== 'freelancer') {
+      //   history.push('/freelancerProfile');
+      // } else if (response === 'admin') {
+      //   history.push('/admin');
+      // } else {
+      //   history.push('/');
+      // }
+    // } catch (error) {
+    //   console.error('Error logging in:', error);
+    // }
   };
 
   const handleSignupClick = () => {

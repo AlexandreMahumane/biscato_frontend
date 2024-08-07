@@ -102,22 +102,24 @@ const ClientMain = () => {
           <h1 className="text-3xl font-semibold text-gray-800 mb-4">Welcome to Your Client Dashboard</h1>
           <p className="mb-4">Your registration was successful. Explore your dashboard to get started.</p>
           <div className="flex justify-around">
-            <button
-              onClick={() => handleOptionClick('feedback')}
-              className="btn-feedback"
-            >
-              Give Feedback
-            </button>
-            <button
-              onClick={() => handleOptionClick('history')}
-              className="btn-history"
-            >
-              View History
-            </button>
+          <button
+  onClick={() => handleOptionClick('feedback')}
+  className="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded"
+>
+  Give Feedback
+</button>
+
+<button
+  onClick={() => handleOptionClick('history')}
+  className="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded"
+>
+  View History
+</button>
+
           </div>
         </div>
 
-        <div className="bg-white p-6 rounded-lg shadow-lg max-w-lg mx-auto mt-6 md:ml-4">
+        <div className="bg-green-100 text-green-800 p-6 rounded-lg shadow-md max-w-md mx-auto mt-6 md:mr-4 transition-transform duration-300 hover:scale-105">
           <div className="mb-4 md:flex md:space-x-4">
             <div className="w-full md:w-2/3">
               <label htmlFor="category" className="block text-lg font-semibold mb-2 text-center md:text-left">Find freelancer:</label>
@@ -142,21 +144,22 @@ const ClientMain = () => {
               </select>
             </div>
             <div className="w-full flex items-center justify-center mt-4">
-              <button
-                onClick={handleSearch}
-                className="btn-search"
-                disabled={loading}
-              >
-                {loading ? 'Searching...' : 'Search'}
-              </button>
-              <button
-                onClick={handleCancel}
-                className="btn-cancel"
-                disabled={!loading}
-              >
-                Cancel
-              </button>
-            </div>
+  <button
+    onClick={handleSearch}
+    className="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded mr-2"
+    disabled={loading}
+  >
+    {loading ? 'Searching...' : 'Search'}
+  </button>
+  <button
+    onClick={handleCancel}
+    className="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded mr-2"
+    disabled={!loading}
+  >
+    Cancel
+  </button>
+</div>
+
           </div>
 
           {loading && <p className="text-center text-gray-500">Loading...</p>}
