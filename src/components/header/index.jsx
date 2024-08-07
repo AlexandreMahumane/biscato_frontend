@@ -17,6 +17,25 @@ export const Header = () => {
     toggleMenu(); 
   };
 
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await axios.post('/auth', {
+        identifier,
+        password
+      });
+      setSuccessMessage('Login successfully.');
+      console.log(response.data);
+
+      // Set a timeout to show options after a few seconds
+      setTimeout(() => {
+        setShowOptions(true);
+      }, 3000);
+      navigate('/client')
+    } catch (error) {
+      console.error('Error Login user', error);
+    }
+  };
   const handleSignupClick = () => {
     setShowSignup(true);
     setShowLogin(false);
@@ -136,6 +155,7 @@ export const Header = () => {
               </label>
               <button
                 type="submit"
+                onSubmit={handleSubmit}
                 className="w-full bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50"
               >
                 Login

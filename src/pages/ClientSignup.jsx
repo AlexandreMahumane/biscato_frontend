@@ -15,7 +15,7 @@ export const ClientRegistrationForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('/api/register/client', {
+      const response = await api.post('/user', {
         name,
         phone,
         password
@@ -27,7 +27,7 @@ export const ClientRegistrationForm = () => {
       setTimeout(() => {
         setShowOptions(true);
       }, 3000);
-
+      navigate('/client')
     } catch (error) {
       console.error('Error registering client', error);
     }

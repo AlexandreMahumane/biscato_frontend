@@ -17,7 +17,7 @@ export const FreelancerRegistrationForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('/api/register/client', {
+      const response = await axios.post('/freelancer', {
         name,
         phone,
         documentType,
@@ -31,7 +31,8 @@ export const FreelancerRegistrationForm = () => {
       setTimeout(() => {
         setShowOptions(true);
       }, 3000);
-
+      navigate('/FreelancerProfile');
+      
     } catch (error) {
       console.error('Error registering client', error);
     }
