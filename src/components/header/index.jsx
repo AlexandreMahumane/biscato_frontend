@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import Modal from 'react-modal'; 
+import Modal from 'react-modal';
 import { List } from "@phosphor-icons/react";
 import { Link } from "react-router-dom";
 
@@ -7,7 +7,7 @@ Modal.setAppElement('#root');
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [showLogin, setShowLogin] = useState(false); 
+  const [showLogin, setShowLogin] = useState(false);
   const [showSignup, setShowSignup] = useState(false);
 
   const toggleMenu = () => {
@@ -17,7 +17,7 @@ const Header = () => {
   const handleLoginClick = () => {
     setShowLogin(true);
     setShowSignup(false);
-    toggleMenu(); 
+    toggleMenu();
   };
 
   const handleSubmit = async (e) => {
@@ -186,5 +186,5 @@ const Header = () => {
   );
 };
 
-export default Header;
-``
+export { Header };
+
