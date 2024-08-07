@@ -1,13 +1,12 @@
-import { Main } from "./pages/main"
+import { RouterProvider } from 'react-router-dom';
+import { route } from './router'
 
 function App() {
-
-
   return (
-    <>
-      <Main/>
-    </>
-  )
+    <RouterProvider router={route} />
+  );
 }
 
-export default App
+export default App;
+
+
