@@ -1,7 +1,8 @@
 import React, { useState, useRef } from 'react';
 import axios from 'axios';
-import { Footer } from '../components/footer';
 import { Header } from '../components/header';
+import { Footer } from '../components/footer';
+
 
 export const SearchFreelancer = () => {
   const [query, setQuery] = useState('');
