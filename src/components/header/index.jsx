@@ -51,7 +51,7 @@ export const Header = () => {
     <nav className="bg-blue-600 text-white py-4">
       <div className="container mx-auto flex justify-between items-center px-4">
         <div className="border-2 border-gray-300 rounded-lg px-2 flex items-center">
-          <p className="text-lg px-4 hover:text-blue-950 cursor-pointer">Logo</p>
+          <p className="text-lg px-4 hover:text-blue-950 cursor-pointer">Biscato</p>
         </div>
 
         <div className="hidden md:flex items-center">
@@ -72,12 +72,7 @@ export const Header = () => {
             >
               Login
             </button>
-            {/* <button
-              onClick={handleSignupClick}
-              className="bg-blue-700 hover:bg-blue-800 text-white px-4 py-2 rounded-lg ml-2"
-            >
-              Signup
-            </button> */}
+           
           </div>
         </div>
 
@@ -115,12 +110,7 @@ export const Header = () => {
             >
               Login
             </button>
-            {/* <button
-              onClick={handleSignupClick}
-              className="block py-1 text-sm hover:text-blue-600"
-            >
-              Signup
-            </button> */}
+            
           </div>
         </div>
       )}
@@ -140,9 +130,9 @@ export const Header = () => {
               <label className="block mb-4">
                 <span className="text-gray-700">Nome/Telefone</span>
                 <input
-                  type="email"
+                  type="name/number"
                   required
-                  className="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                  className="mt-1 block w-full text-gray-700 border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                 />
               </label>
               <label className="block mb-4">
@@ -150,7 +140,7 @@ export const Header = () => {
                 <input
                   type="password"
                   required
-                  className="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                  className="text-gray-700 mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                 />
               </label>
               <button
