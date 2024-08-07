@@ -117,12 +117,10 @@ const ClientMain = () => {
           </div>
         </div>
 
-        {/* Seção à direita (Seletor de categoria e resultados) */}
         <div className="bg-white p-6 rounded-lg shadow-lg max-w-lg mx-auto mt-6 md:ml-4">
           <div className="mb-4 flex flex-col md:flex-row md:space-x-4">
             <div className="w-full md:w-2/3">
-              <label htmlFor="category" className="block text-lg font-semibold mb-2">Select Category:</label>
-              <div className="mb-4">
+            <label htmlFor="category" className="block text-lg font-semibold mb-2 text-center md:text-left">Find freelancer:</label>              <div className="mb-4">
                 <input
                   type="text"
                   value={query}
@@ -144,22 +142,23 @@ const ClientMain = () => {
                 <option value="designer">Designer</option>
               </select>
             </div>
-            <div className="w-full md:w-1/3 flex items-end justify-center md:justify-end mt-4 md:mt-0">
-              <button
-                onClick={handleSearch}
-                className="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600"
-                disabled={loading}
-              >
-                {loading ? 'Searching...' : 'Search'}
-              </button>
-              <button
-                onClick={handleCancel}
-                className="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 ml-2"
-                disabled={!loading}
-              >
-                Cancel
-              </button>
-            </div>
+            <div className="w-full flex items-center justify-center mt-4">
+  <button
+    onClick={handleSearch}
+    className="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600"
+    disabled={loading}
+  >
+    {loading ? 'Searching...' : 'Search'}
+  </button>
+  <button
+    onClick={handleCancel}
+    className="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 ml-2"
+    disabled={!loading}
+  >
+    Cancel
+  </button>
+</div>
+
           </div>
 
           {loading && <p className="text-center text-gray-500">Loading...</p>}
