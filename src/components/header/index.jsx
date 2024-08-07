@@ -1,11 +1,12 @@
-import { List } from "@phosphor-icons/react";
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { useHistory } from "react-router-dom";
+import axios from 'axios';
 
 export const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [showLogin, setShowLogin] = useState(false); 
+  const [showLogin, setShowLogin] = useState(false);
   const [showSignup, setShowSignup] = useState(false);
+  const history = useHistory(); // Importe e inicialize o useHistory
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -14,28 +15,36 @@ export const Header = () => {
   const handleLoginClick = () => {
     setShowLogin(true);
     setShowSignup(false);
-    toggleMenu(); 
+    toggleMenu();
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
+      // Simula uma chamada de autenticação (substitua com sua lógica real)
       const response = await axios.post('/auth', {
         identifier,
         password
       });
-      setSuccessMessage('Login successfully.');
-      console.log(response.data);
 
-      // Set a timeout to show options after a few seconds
-      setTimeout(() => {
-        setShowOptions(true);
-      }, 3000);
-      navigate('/client')
+      console.log('Login successful:', response.data);
+
+      // Redirecionamento com base no tipo de usuário
+      if (response.data.userType === 'client') {
+        history.push('/client');
+      } else if (response.data.userType === 'freelancer') {
+        history.push('/freelancerProfile');
+      } else if (response.data.userType === 'admin') {
+        history.push('/admin');
+      } else {
+        // Redirecionamento padrão ou lógica adicional aqui
+        history.push('/');
+      }
     } catch (error) {
-      console.error('Error Login user', error);
+      console.error('Error logging in:', error);
     }
   };
+
   const handleSignupClick = () => {
     setShowSignup(true);
     setShowLogin(false);
@@ -62,7 +71,7 @@ export const Header = () => {
             Encontrar Freelancer
           </Link>
           <Link to="/signup/freelancer" className="mr-4 text-lg hover:text-blue-950">
-            Encontrar Freelancer
+            Tornar-se Freelancer
           </Link>
 
           <div className="ml-4">
@@ -72,7 +81,6 @@ export const Header = () => {
             >
               Login
             </button>
-           
           </div>
         </div>
 
@@ -81,7 +89,7 @@ export const Header = () => {
             className="text-white focus:outline-none hover:text-blue-950"
             onClick={toggleMenu}
           >
-            <List size={32} />
+            Menu
           </button>
         </div>
       </div>
@@ -93,14 +101,13 @@ export const Header = () => {
               Home
             </Link>
             <Link to="/client" className="text-sm block py-1 hover:text-blue-600" onClick={toggleMenu}>
-              Client
+              Cliente
             </Link>
-            
             <Link to="/freelancerProfile" className="text-sm block py-1 hover:text-blue-600" onClick={toggleMenu}>
-            FreelancerProfile
+              Perfil de Freelancer
             </Link>
             <Link to="/searchFreelancer" className="text-sm block py-1 hover:text-blue-600" onClick={toggleMenu}>
-            SearchFreelancer
+              Procurar Freelancer
             </Link>
           </div>
           <div className="mt-4">
@@ -110,12 +117,11 @@ export const Header = () => {
             >
               Login
             </button>
-            
           </div>
         </div>
       )}
 
-      {/* Login Form */}
+      {/* Formulário de Login */}
       {showLogin && (
         <div className="fixed inset-0 flex items-center justify-center bg-gray-800 bg-opacity-75">
           <div className="bg-white p-6 rounded-lg shadow-md max-w-sm mx-auto relative">
@@ -126,11 +132,11 @@ export const Header = () => {
               &times;
             </button>
             <h2 className="text-2xl font-semibold text-gray-800 mb-4">Login</h2>
-            <form>
+            <form onSubmit={handleSubmit}>
               <label className="block mb-4">
                 <span className="text-gray-700">Nome/Telefone</span>
                 <input
-                  type="name/number"
+                  type="text"
                   required
                   className="mt-1 block w-full text-gray-700 border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                 />
@@ -145,7 +151,6 @@ export const Header = () => {
               </label>
               <button
                 type="submit"
-                onSubmit={handleSubmit}
                 className="w-full bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50"
               >
                 Login
@@ -155,7 +160,7 @@ export const Header = () => {
         </div>
       )}
 
-      {/* Signup Form */}
+      {/* Formulário de Cadastro */}
       {showSignup && (
         <div className="fixed inset-0 flex items-center justify-center bg-gray-800 bg-opacity-75">
           <div className="bg-white p-6 rounded-lg shadow-md max-w-sm mx-auto relative">
