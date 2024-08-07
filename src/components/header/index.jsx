@@ -1,17 +1,19 @@
 import React, { useState } from "react";
+import Modal from "react-modal";
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 
+Modal.setAppElement('#root');
 
-
-export const Header = () => {
+const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [showLogin, setShowLogin] = useState(false);
   const [showSignup, setShowSignup] = useState(false);
-  const [identifier, setIdentifier] = useState('')
-  const [password, setpassword] = useState('')
-const navigate = useNavigate();
+  const [identifier, setIdentifier] = useState('');
+  const [password, setPassword] = useState('');
+  const navigate = useNavigate();
+
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
@@ -24,7 +26,7 @@ const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    // try {
+    try {
       // Simula uma chamada de autenticação (substitua com sua lógica real)
       // const response = await axios.post('/auth', {
       //   identifier,
@@ -33,7 +35,7 @@ const navigate = useNavigate();
 
       // console.log('Login successful:', response.data);
 
-      navigate("/client")
+      navigate("/client");
       // const response = 'client'
       // // Redirecionamento com base no tipo de usuário
       // if (response === 'client') {
@@ -45,9 +47,9 @@ const navigate = useNavigate();
       // } else {
       //   history.push('/');
       // }
-    // } catch (error) {
-    //   console.error('Error logging in:', error);
-    // }
+    } catch (error) {
+      console.error('Error logging in:', error);
+    }
   };
 
   const handleSignupClick = () => {
@@ -128,12 +130,15 @@ const navigate = useNavigate();
 
       {/* Formulário de Login */}
       {showLogin && (
-        <div className="fixed inset-0 flex items-center justify-center bg-gray-800 bg-opacity-75">
+        <Modal
+          isOpen={showLogin}
+          onRequestClose={handleCloseForms}
+          contentLabel="Login"
+          className="fixed inset-0 flex items-center justify-center bg-gray-800 bg-opacity-75"
+          overlayClassName="fixed inset-0 bg-gray-800 bg-opacity-75"
+        >
           <div className="bg-white p-6 rounded-lg shadow-md max-w-sm mx-auto relative">
-            <button
-              onClick={handleCloseForms}
-              className="absolute top-2 right-2 text-gray-500 hover:text-gray-700"
-            >
+            <button onClick={handleCloseForms} className="absolute top-2 right-2 text-gray-500 hover:text-gray-700">
               &times;
             </button>
             <h2 className="text-2xl font-semibold text-gray-800 mb-4">Login</h2>
@@ -162,17 +167,20 @@ const navigate = useNavigate();
               </button>
             </form>
           </div>
-        </div>
+        </Modal>
       )}
 
       {/* Formulário de Cadastro */}
       {showSignup && (
-        <div className="fixed inset-0 flex items-center justify-center bg-gray-800 bg-opacity-75">
+        <Modal
+          isOpen={showSignup}
+          onRequestClose={handleCloseForms}
+          contentLabel="Signup"
+          className="fixed inset-0 flex items-center justify-center bg-gray-800 bg-opacity-75"
+          overlayClassName="fixed inset-0 bg-gray-800 bg-opacity-75"
+        >
           <div className="bg-white p-6 rounded-lg shadow-md max-w-sm mx-auto relative">
-            <button
-              onClick={handleCloseForms}
-              className="absolute top-2 right-2 text-gray-500 hover:text-gray-700"
-            >
+            <button onClick={handleCloseForms} className="absolute top-2 right-2 text-gray-500 hover:text-gray-700">
               &times;
             </button>
             <h2 className="text-2xl font-semibold text-gray-800 mb-4">Signup</h2>
@@ -209,8 +217,10 @@ const navigate = useNavigate();
               </button>
             </form>
           </div>
-        </div>
+        </Modal>
       )}
     </nav>
   );
 };
+
+export { Header };

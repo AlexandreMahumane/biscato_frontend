@@ -8,6 +8,7 @@ import { ClientRegistrationForm } from "./pages/ClientSignup";
 import { FreelancerProfile } from "./pages/FreelancerProfile";
 import Main from "./pages/main";
 import ClientMain from "./pages/ClientMain";
+import FreelancerPage from "./pages/FreelancerPage";
 
 
 export const route = createBrowserRouter([
@@ -31,6 +32,10 @@ export const route = createBrowserRouter([
     {
     path: "/freelancerProfile",
     element: <FreelancerProfile/>
+    },
+    {
+    path: "/freelacerPage",
+    element: <FreelancerPage/>
     },
 
    
