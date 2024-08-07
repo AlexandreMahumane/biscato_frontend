@@ -1,43 +1,58 @@
+
 import React, { useState } from 'react';
 import { Footer } from '../components/footer';
 import { Header } from '../components/header';
 import { UserCircle } from "@phosphor-icons/react";
+import ModalComponent from '../components/ModalComponent';
 
 const FreelancerPage = () => {
-  // Estado para armazenar os históricos
   const [historics, setHistorics] = useState([
-    { id: 1, title: 'Card 1', content: 'Conteúdo do Card 1' },
-    { id: 2, title: 'Card 2', content: 'Conteúdo do Card 2' },
+    { id: 1, title: 'Card 1', content: 'Conteúdo do Card 1', name: 'Cliente 1', number: '123456789', location: 'Localização 1' },
+    { id: 2, title: 'Card 2', content: 'Conteúdo do Card 2', name: 'Cliente 2', number: '987654321', location: 'Localização 2' },
   ]);
 
-  // Função para remover um histórico
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [modalData, setModalData] = useState({ name: '', number: '', location: '' });
+
   const removeHistoric = (id) => {
     setHistorics(historics.filter(historic => historic.id !== id));
+  };
+
+
+  const openModal = (name, number, location) => {
+    setModalData({ name, number, location });
+    setIsModalOpen(true);
+  };
+
+
+  const closeModal = () => {
+    setIsModalOpen(false);
   };
 
   return (
     <div>
       <Header />
       <main className="p-4 flex flex-col lg:flex-row gap-8">
-        {/* Container de Notification e Historic */}
+        
         <div className="flex-1 flex flex-col gap-8">
-          {/* Section Notification */}
+    
           <div className="flex-1 flex flex-col">
             <h1 className="text-2xl font-bold mb-4">Notification</h1>
             <div className="flex-1 flex flex-col gap-4 p-4 border-2 border-gray-300 rounded-lg">
-              <div className="bg-gray-200 rounded-lg shadow-lg p-4 w-full">
-                <h2 className="text-xl font-semibold mb-2">Card 1</h2>
-                <button className="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 transition">Verificar</button>
-                <p>Conteúdo do Card 1</p>
-              </div>
-              <div className="bg-gray-200 rounded-lg shadow-lg p-4 w-full">
-                <h2 className="text-xl font-semibold mb-2">Card 2</h2>
-                <button className="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 transition">Verificar</button>
-                <p>Conteúdo do Card 2</p>
-              </div>
+              {historics.map(historic => (
+                <div key={historic.id} className="bg-gray-200 rounded-lg shadow-lg p-4 w-full">
+                  <h2 className="text-xl font-semibold mb-2">{historic.title}</h2>
+                  <button 
+                    className="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 transition" 
+                    onClick={() => openModal(historic.name, historic.number, historic.location)}
+                  >
+                    Verificar
+                  </button>
+                  <p>{historic.content}</p>
+                </div>
+              ))}
             </div>
 
-            {/* Section Historic */}
             <div className="mt-8 flex-1 flex flex-col">
               <h1 className="text-2xl font-bold mb-4">Historic</h1>
               <div className="flex-1 flex flex-col gap-4 p-4 border-2 border-gray-300 rounded-lg">
@@ -60,7 +75,6 @@ const FreelancerPage = () => {
           </div>
         </div>
 
-        {/* Container adicional com UserCircle */}
         <div className="relative flex-1 flex flex-col gap-4 p-4 border-2 border-gray-300 rounded-lg">
           <div className="flex justify-center items-center mb-8">
             <UserCircle size={60} />
@@ -88,6 +102,12 @@ const FreelancerPage = () => {
         </div>
       </main>
       <Footer />
+
+      <ModalComponent 
+        isOpen={isModalOpen} 
+        onClose={closeModal} 
+        data={modalData} 
+      />
     </div>
   );
 };
