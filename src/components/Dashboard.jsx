@@ -1,6 +1,9 @@
 import React from 'react';
 import { Line, Pie } from 'react-chartjs-2';
 import 'chart.js/auto';
+import { Profissionais } from './Profissionais';
+import { Users } from '../pages/users';
+
 
 const Dashboard = () => {
   const lineData = {
@@ -24,11 +27,11 @@ const Dashboard = () => {
   };
 
   const pieData = {
-    labels: ['Categoria A', 'Categoria B', 'Categoria C'],
+    labels: ['Trabalhos Requisitados', 'numero de Freelancers'],
     datasets: [
       {
         label: 'Solicitações de Serviço',
-        data: [300, 150, 100],
+        data: [300, 150,],
         backgroundColor: ['rgba(255,99,132,0.2)', 'rgba(54,162,235,0.2)', 'rgba(255,206,86,0.2)'],
         borderColor: ['rgba(255,99,132,1)', 'rgba(54,162,235,1)', 'rgba(255,206,86,1)'],
         borderWidth: 1,
@@ -38,12 +41,13 @@ const Dashboard = () => {
 
   return (
     <div className="min-h-screen bg-gray-100 p-6">
-      <h2 className="text-3xl font-bold mb-8 text-center text-gray-800">Dashboard</h2>
+      <h2 className="text-3xl font-bold mb-8 text-center text-gray-800">Dashboard do Administrador</h2>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
         <div className="bg-white p-6 rounded-lg shadow-lg">
           <h3 className="text-2xl font-semibold mb-4 text-gray-700">Novos Freelancers e Clientes</h3>
           <div className="w-full h-[300px]">
+            
             <Line data={lineData} options={{
               responsive: true,
               plugins: {
@@ -75,13 +79,15 @@ const Dashboard = () => {
         </div>
         <div className="bg-white p-6 rounded-lg shadow-lg">
           <h3 className="text-2xl font-semibold mb-4 text-gray-700">Distribuição de Solicitações de Serviço</h3>
-          <div className="w-full h-[300px]">
+          <div className="w-[300px] h-[300px]">
             <Pie data={pieData} options={{
               responsive: true,
               plugins: {
                 legend: {
                   position: 'top',
                 },
+              
+                
                 tooltip: {
                   callbacks: {
                     label: function (context) {
@@ -92,8 +98,11 @@ const Dashboard = () => {
               },
             }} />
           </div>
+         
         </div>
+        <Profissionais/>
       </div>
+      <Users/>
     </div>
   );
 };
