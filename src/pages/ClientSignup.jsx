@@ -5,8 +5,8 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { Footer } from '../components/footer/index';
+import HeaderClient from '../components/header/headerClient';
 
-import {Header} from '../components/header';
 
 
 export const ClientRegistrationForm = () => {
@@ -35,7 +35,6 @@ export const ClientRegistrationForm = () => {
       });
       console.log(response.data);
 
-      // Set a timeout to show options after a few seconds
       setTimeout(() => {
         setShowOptions(true);
       }, 3000);
@@ -49,7 +48,7 @@ export const ClientRegistrationForm = () => {
 
   return (
     <>
-      <Header/>
+      <HeaderClient/>
       <div className="container mx-auto p-4">
         {!showOptions ? (
           <form onSubmit={handleSubmit} className="bg-gray-100 p-6 rounded-lg shadow-md max-w-md mx-auto">

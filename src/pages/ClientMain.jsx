@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import { Header } from '../components/header';
 import { Footer } from '../components/footer';
 import { XCircle } from "@phosphor-icons/react";
+import HeaderClient from '../components/header/headerClient';
 
 const ClientMain = () => {
   const [query, setQuery] = useState('');
@@ -47,7 +47,7 @@ const ClientMain = () => {
 
   return (
     <>
-      <Header showAlert={showAlert} setShowAlert={setShowAlert} />
+      <HeaderClient showAlert={showAlert} setShowAlert={setShowAlert} />
       <div className="container mx-auto p-4 md:flex md:justify-between">
   <div className={`bg-green-200 space-y-32 text-green-800 p-6 rounded-lg shadow-md max-w-md mx-auto mt-6 md:mr-4 transition-transform duration-300 hover:scale-105 ${expandedSection === null ? '' : 'hidden'}`}>
     <h1 className="text-3xl text-center  font-bold text-green-800 mb-4 md:mb-8">Welcome To Your Place</h1>
