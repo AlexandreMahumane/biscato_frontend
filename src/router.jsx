@@ -34,10 +34,7 @@ export const route = createBrowserRouter([
     path: "/signup/freelancer",
     element: <FreelancerRegistrationForm/>
     },
-    {
-    path: "/clientpage",
-    element: <ClientPage/>
-    },
+   
 
    
    
