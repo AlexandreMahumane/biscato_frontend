@@ -22,7 +22,6 @@ const Header = ({ userType }) => {
   
       console.log(response.data);
 
-      // Set a timeout to show options after a few seconds
       setTimeout(() => {
         setShowOptions(true);
       }, 3000);
