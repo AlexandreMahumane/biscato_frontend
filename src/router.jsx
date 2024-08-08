@@ -4,7 +4,6 @@ import { ClientRegistrationForm } from './pages/ClientSignup';
 import { SearchFreelancer } from './pages/SearchFreelancer';
 import { FreelancerProfile } from './pages/FreelancerProfile';
 import { FreelancerRegistrationForm } from './pages/FreelancerSignup';
-import ClientPage from './pages/clientPage';
 import ClientMain from './pages/ClientMain';
 
 
