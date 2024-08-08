@@ -1,8 +1,11 @@
 import React, { useState } from 'react';
+
 import Modal from 'react-modal';
 import { Link, useNavigate } from 'react-router-dom';
 
 Modal.setAppElement('#root'); // Define o elemento raiz para o Modal
+
+
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false); // Estado para controlar a abertura do menu
@@ -56,6 +59,7 @@ const Header = () => {
   return (
     <nav className="bg-blue-600 text-white py-4">
       <div className="container mx-auto flex justify-between items-center px-4">
+
         <div className="border-2 border-gray-300 rounded-lg px-2 flex items-center">
           <p className="text-lg px-4 hover:text-blue-950 cursor-pointer">Biscato</p>
         </div>
@@ -80,22 +84,13 @@ const Header = () => {
             >
               Login
             </button>
+
           </div>
         </div>
 
         {/* Botão de menu para telas menores */}
         <div className="md:hidden flex items-center">
-          <button
-            className="text-white focus:outline-none hover:text-blue-950"
-            onClick={toggleMenu}
-          >
-            Menu
-          </button>
-        </div>
-      </div>
 
-      {/* Menu móvel */}
-      {isMenuOpen && (
         <div className="md:hidden flex flex-col items-center mt-4">
           <Link to="/" className="mb-4 text-lg hover:text-blue-950">
             Home
@@ -118,6 +113,7 @@ const Header = () => {
       )}
 
       {/* Formulário de Login */}
+
       {showLogin && (
         <Modal
           isOpen={showLogin}
@@ -135,6 +131,7 @@ const Header = () => {
               <label className="block mb-4">
                 <span className="text-gray-700">Nome/Telefone</span>
                 <input
+
                   type="text"
                   required
                   className="mt-1 block w-full text-gray-700 border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
@@ -162,4 +159,5 @@ const Header = () => {
   );
 };
 
-export { Header };
+export default Header;
+
