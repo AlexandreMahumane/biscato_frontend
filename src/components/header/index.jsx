@@ -1,46 +1,56 @@
-import React, { useState } from "react";
-import Modal from "react-modal";
-import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
-import { Link } from 'react-router-dom';
+import React, { useState } from 'react';
+import Modal from 'react-modal';
+import { Link, useNavigate } from 'react-router-dom';
 
-Modal.setAppElement('#root');
+Modal.setAppElement('#root'); // Define o elemento raiz para o Modal
 
 const Header = () => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [showLogin, setShowLogin] = useState(false);
-  const [identifier, setIdentifier] = useState('');
-  const [password, setPassword] = useState('');
-  const navigate = useNavigate();
+  const [isMenuOpen, setIsMenuOpen] = useState(false); // Estado para controlar a abertura do menu
+  const [showLogin, setShowLogin] = useState(false); // Estado para controlar a exibição do formulário de login
+  const navigate = useNavigate(); // Hook para navegação programática
 
+  // Função para alternar a visibilidade do menu
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
 
+  // Função para lidar com o clique no botão de login
   const handleLoginClick = () => {
     setShowLogin(true);
-    toggleMenu();
+    setIsMenuOpen(false); // Fecha o menu ao abrir o formulário de login
   };
 
+  // Função para lidar com o envio do formulário de login
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      // Simula uma chamada de autenticação (substitua com sua lógica real)
-      // const response = await axios.post('/auth', {
-      //   identifier,
-      //   password
-      // });
+      // Lógica de autenticação aqui (simulada com navegação)
+      // Suponha que o login seja bem-sucedido e o tipo de usuário seja 'client', 'freelancer' ou 'admin'
+      const userType = 'client'; // Simulação - deve ser substituído com sua lógica real
 
-      // console.log('Login successful:', response.data);
-
-      navigate("/client");
+      // Redireciona com base no tipo de usuário
+      switch (userType) {
+        case 'client':
+          navigate("/client"); // Navega para a página do cliente após o login
+          break;
+        case 'freelancer':
+          navigate("/freelancer"); // Navega para a página do freelancer após o login
+          break;
+        case 'admin':
+          navigate("/admin"); // Navega para a página do administrador após o login
+          break;
+        default:
+          navigate("/"); // Caso nenhum tipo correspondente seja encontrado, volta para a página inicial
+          break;
+      }
     } catch (error) {
-      console.error('Error logging in:', error);
+      console.error('Erro ao fazer login:', error);
     }
   };
 
+  // Função para fechar os formulários (login)
   const handleCloseForms = () => {
-    setShowLogin(false);
+    setShowLogin(false); // Define o estado para esconder o formulário de login
   };
 
   return (
@@ -62,6 +72,7 @@ const Header = () => {
             Tornar-se Freelancer
           </Link>
 
+          {/* Botão de login */}
           <div className="ml-4">
             <button
               onClick={handleLoginClick}
@@ -85,35 +96,24 @@ const Header = () => {
 
       {/* Menu móvel */}
       {isMenuOpen && (
-        <div className="hidden md:flex items-center">
-        <Link to="/" className="mr-4 text-lg hover:text-blue-950">
-          Home
-        </Link>
-        <Link to="/signup/client" className="mr-4 text-lg hover:text-blue-950">
-          Encontrar Freelancer
-        </Link>
-        <Link to="/signup/freelancer" className="mr-4 text-lg hover:text-blue-950">
-          Tornar-se Freelancer
-        </Link>
+        <div className="md:hidden flex flex-col items-center mt-4">
+          <Link to="/" className="mb-4 text-lg hover:text-blue-950">
+            Home
+          </Link>
+          <Link to="/signup/client" className="mb-4 text-lg hover:text-blue-950">
+            Encontrar Freelancer
+          </Link>
+          <Link to="/signup/freelancer" className="mb-4 text-lg hover:text-blue-950">
+            Tornar-se Freelancer
+          </Link>
 
-        <div className="ml-4">
+          {/* Botão de login no menu móvel */}
           <button
             onClick={handleLoginClick}
             className="bg-blue-700 hover:bg-blue-800 text-white px-4 py-2 rounded-lg"
           >
             Login
           </button>
-        </div>
-      
-
-          <div className="mt-4">
-            <button
-              onClick={handleLoginClick}
-              className="block py-1 text-sm hover:text-blue-600"
-            >
-              Login
-            </button>
-          </div>
         </div>
       )}
 

@@ -1,9 +1,10 @@
-import { createBrowserRouter } from "react-router-dom";
-import {  ClientRegistrationForm } from "./client";
-import { Main } from "./main";
-import {SearchFreelancer} from "./SearchFreelancer";
-import {FreelancerProfile} from "../pages/FreelancerProfile";
-import ClientPage from "./clientPage";
+import { createBrowserRouter } from 'react-router-dom';
+import Main from './pages/main';
+import { ClientRegistrationForm } from './pages/ClientSignup';
+import { SearchFreelancer } from './pages/SearchFreelancer';
+import { FreelancerProfile } from './pages/FreelancerProfile';
+import ClientPage from './pages/clientPage';
+import { FreelancerRegistrationForm } from './pages/FreelancerSignup';
 
 
 export const route = createBrowserRouter([
@@ -16,12 +17,20 @@ export const route = createBrowserRouter([
      element: <ClientRegistrationForm/>
     },
     {
+     path: "/signup/client",
+     element: <ClientRegistrationForm/>
+    },
+    {
     path: "/SearchFreelancer",
      element: <SearchFreelancer/>
     },
     {
     path: "/freelancerProfile",
     element: <FreelancerProfile/>
+    },
+    {
+    path: "/signup/freelancer",
+    element: <FreelancerRegistrationForm/>
     },
     {
     path: "/clientpage",
@@ -31,4 +40,3 @@ export const route = createBrowserRouter([
    
    
    ]);
-   
