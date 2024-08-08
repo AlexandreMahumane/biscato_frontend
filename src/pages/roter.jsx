@@ -2,7 +2,7 @@ import { createBrowserRouter } from "react-router-dom";
 import {  ClientRegistrationForm } from "./client";
 import { Main } from "./main";
 import {SearchFreelancer} from "./SearchFreelancer";
-import {FreelancerProfile} from "./FreelancerProfile";
+import {FreelancerProfile} from "../pages/FreelancerProfile";
 import ClientPage from "./clientPage";
 
 

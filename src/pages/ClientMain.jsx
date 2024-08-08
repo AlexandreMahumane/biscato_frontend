@@ -117,7 +117,7 @@ const ClientMain = () => {
       // Simulando uma resposta com resultados
       const mockResults = [{ name: 'Freelancer 1' }, { name: 'Freelancer 2' }];
       setResults(mockResults);
-      setShowAlert(true); // Exibe o alerta após obter resultados
+      setShowAlert(true); 
     } catch (error) {
       setError('Failed to fetch results. Please try again.');
     } finally {
@@ -126,7 +126,6 @@ const ClientMain = () => {
   };
 
   const handleCancel = () => {
-    // Lógica para cancelar a pesquisa
   };
 
   return (
