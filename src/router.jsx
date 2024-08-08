@@ -1,15 +1,13 @@
-import { createBrowserRouter } from "react-router-dom";
 
-// import { Main } from "./pages/main";
-// import {SearchFreelancer} from "./pages/SearchFreelancer";
-// import {FreelancerProfile} from "./pages/FreelancerProfile";
-import { FreelancerRegistrationForm } from "./pages/FreelancerSignup";
-import { ClientRegistrationForm } from "./pages/ClientSignup";
-import { SearchFreelancer } from "./pages/SearchFreelancer";
-import { FreelancerProfile } from "./pages/FreelancerProfile";
-import Main from "./pages/main";
-import ClientMain from "./pages/ClientMain";
-import FreelancerPage from "./pages/FreelancerPage";
+import { createBrowserRouter } from 'react-router-dom';
+import Main from './pages/main';
+import { ClientRegistrationForm } from './pages/ClientSignup';
+import { SearchFreelancer } from './pages/SearchFreelancer';
+import { FreelancerProfile } from './pages/FreelancerProfile';
+import { FreelancerRegistrationForm } from './pages/FreelancerSignup';
+import ClientPage from './pages/clientPage';
+import ClientMain from './pages/ClientMain';
+
 
 
 export const route = createBrowserRouter([
@@ -18,16 +16,13 @@ export const route = createBrowserRouter([
      element: <Main/>
     },
     {
-     path: "/signup/client",
-     element: <ClientRegistrationForm/>
-    },
-    {
-     path: "/client",
+     path: "/clientmain",
      element: <ClientMain/>
     },
+    
     {
-     path: "/signup/freelancer",
-     element: <FreelancerRegistrationForm/>
+     path: "/signup/client",
+     element: <ClientRegistrationForm/>
     },
     {
     path: "/SearchFreelancer",
@@ -38,11 +33,13 @@ export const route = createBrowserRouter([
     element: <FreelancerProfile/>
     },
     {
-    path: "/freelacerPage",
-    element: <FreelancerPage/>
+
+    path: "/signup/freelancer",
+    element: <FreelancerRegistrationForm/>
     },
+   
+
 
    
    
    ]);
-   
