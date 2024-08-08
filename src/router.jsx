@@ -3,8 +3,8 @@ import Main from './pages/main';
 import { ClientRegistrationForm } from './pages/ClientSignup';
 import { SearchFreelancer } from './pages/SearchFreelancer';
 import { FreelancerProfile } from './pages/FreelancerProfile';
-import ClientPage from './pages/clientPage';
 import { FreelancerRegistrationForm } from './pages/FreelancerSignup';
+import ClientPage from './pages/clientPage';
 
 
 export const route = createBrowserRouter([
@@ -12,10 +12,7 @@ export const route = createBrowserRouter([
      path: "/",
      element: <Main/>
     },
-    {
-     path: "/client",
-     element: <ClientRegistrationForm/>
-    },
+    
     {
      path: "/signup/client",
      element: <ClientRegistrationForm/>
