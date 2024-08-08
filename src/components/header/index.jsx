@@ -26,6 +26,7 @@ export const Header = () => {
         password
       });
       setSuccessMessage('Login successfully.');
+  
       console.log(response.data);
 
       // Set a timeout to show options after a few seconds
@@ -144,7 +145,7 @@ export const Header = () => {
               <label className="block mb-4">
                 <span className="text-gray-700">Nome/Telefone</span>
                 <input
-                  type="email"
+                  type="text"
                   required
                   className="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                 />
