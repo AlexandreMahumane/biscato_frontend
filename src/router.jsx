@@ -5,12 +5,17 @@ import { SearchFreelancer } from './pages/SearchFreelancer';
 import { FreelancerProfile } from './pages/FreelancerProfile';
 import { FreelancerRegistrationForm } from './pages/FreelancerSignup';
 import ClientPage from './pages/clientPage';
+import ClientMain from './pages/ClientMain';
 
 
 export const route = createBrowserRouter([
     {
      path: "/",
      element: <Main/>
+    },
+    {
+     path: "/clientmain",
+     element: <ClientMain/>
     },
     
     {
