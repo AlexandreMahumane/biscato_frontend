@@ -1,66 +1,56 @@
-import React, { useState } from 'react';
-import Modal from 'react-modal';
-import { Link, useNavigate } from 'react-router-dom';
+import { List } from "@phosphor-icons/react";
+import React, { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import Modal from "react-modal";
+import axios from 'axios';
 
-Modal.setAppElement('#root'); // Define o elemento raiz para o Modal
+Modal.setAppElement('#root');
 
 const Header = () => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false); // Estado para controlar a abertura do menu
-  const [showLogin, setShowLogin] = useState(false); // Estado para controlar a exibição do formulário de login
-  const navigate = useNavigate(); // Hook para navegação programática
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [showLogin, setShowLogin] = useState(false);
+  const [identifier, setIdentifier] = useState('');
+  const [password, setPassword] = useState('');
+  const navigate = useNavigate();
 
-  // Função para alternar a visibilidade do menu
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
 
-  // Função para lidar com o clique no botão de login
   const handleLoginClick = () => {
     setShowLogin(true);
-    setIsMenuOpen(false); // Fecha o menu ao abrir o formulário de login
+    toggleMenu();
   };
 
-  // Função para lidar com o envio do formulário de login
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      // Lógica de autenticação aqui (simulada com navegação)
-      // Suponha que o login seja bem-sucedido e o tipo de usuário seja 'client', 'freelancer' ou 'admin'
-      const userType = 'client'; // Simulação - deve ser substituído com sua lógica real
+      // Simula uma chamada de autenticação (substitua com sua lógica real)
+      const response = await axios.post('/auth', {
+        identifier,
+        password
+      });
 
-      // Redireciona com base no tipo de usuário
-      switch (userType) {
-        case 'client':
-          navigate("/client"); // Navega para a página do cliente após o login
-          break;
-        case 'freelancer':
-          navigate("/freelancer"); // Navega para a página do freelancer após o login
-          break;
-        case 'admin':
-          navigate("/admin"); // Navega para a página do administrador após o login
-          break;
-        default:
-          navigate("/"); // Caso nenhum tipo correspondente seja encontrado, volta para a página inicial
-          break;
-      }
+      console.log('Login successful:', response.data);
+
+      // Redireciona para a página apropriada após o login
+      navigate("/client");
     } catch (error) {
-      console.error('Erro ao fazer login:', error);
+      console.error('Error logging in:', error);
     }
   };
 
-  // Função para fechar os formulários (login)
   const handleCloseForms = () => {
-    setShowLogin(false); // Define o estado para esconder o formulário de login
+    setShowLogin(false);
   };
 
   return (
     <nav className="bg-blue-600 text-white py-4">
       <div className="container mx-auto flex justify-between items-center px-4">
         <div className="border-2 border-gray-300 rounded-lg px-2 flex items-center">
-          <p className="text-lg px-4 hover:text-blue-950 cursor-pointer">Biscato</p>
+          <p className="text-lg px-4 hover:text-blue-950 cursor-pointer">Logo</p>
         </div>
 
-        {/* Links para telas maiores */}
         <div className="hidden md:flex items-center">
           <Link to="/" className="mr-4 text-lg hover:text-blue-950">
             Home
@@ -71,8 +61,10 @@ const Header = () => {
           <Link to="/signup/freelancer" className="mr-4 text-lg hover:text-blue-950">
             Tornar-se Freelancer
           </Link>
+          <Link to="/freelacerPage" className="mr-4 text-lg hover:text-blue-950">
+            Página Freelancer
+          </Link>
 
-          {/* Botão de login */}
           <div className="ml-4">
             <button
               onClick={handleLoginClick}
@@ -83,41 +75,44 @@ const Header = () => {
           </div>
         </div>
 
-        {/* Botão de menu para telas menores */}
         <div className="md:hidden flex items-center">
           <button
             className="text-white focus:outline-none hover:text-blue-950"
             onClick={toggleMenu}
           >
-            Menu
+            <List size={32} />
           </button>
         </div>
       </div>
 
-      {/* Menu móvel */}
       {isMenuOpen && (
-        <div className="md:hidden flex flex-col items-center mt-4">
-          <Link to="/" className="mb-4 text-lg hover:text-blue-950">
-            Home
-          </Link>
-          <Link to="/signup/client" className="mb-4 text-lg hover:text-blue-950">
-            Encontrar Freelancer
-          </Link>
-          <Link to="/signup/freelancer" className="mb-4 text-lg hover:text-blue-950">
-            Tornar-se Freelancer
-          </Link>
-
-          {/* Botão de login no menu móvel */}
-          <button
-            onClick={handleLoginClick}
-            className="bg-blue-700 hover:bg-blue-800 text-white px-4 py-2 rounded-lg"
-          >
-            Login
-          </button>
+        <div className="md:hidden bg-blue-600 text-white py-2 px-4">
+          <div className="flex flex-col gap-2">
+            <Link to="/" className="text-sm block py-1 hover:text-blue-600" onClick={toggleMenu}>
+              Home
+            </Link>
+            <Link to="/client" className="text-sm block py-1 hover:text-blue-600" onClick={toggleMenu}>
+              Cliente
+            </Link>
+            <Link to="/freelancerProfile" className="text-sm block py-1 hover:text-blue-600" onClick={toggleMenu}>
+              Perfil de Freelancer
+            </Link>
+            <Link to="/searchFreelancer" className="text-sm block py-1 hover:text-blue-600" onClick={toggleMenu}>
+              Procurar Freelancer
+            </Link>
+          </div>
+          <div className="mt-4">
+            <button
+              onClick={handleLoginClick}
+              className="block py-1 text-sm hover:text-blue-600"
+            >
+              Login
+            </button>
+          </div>
         </div>
       )}
 
-      {/* Formulário de Login */}
+      {/* Login Form */}
       {showLogin && (
         <Modal
           isOpen={showLogin}
@@ -137,6 +132,8 @@ const Header = () => {
                 <input
                   type="text"
                   required
+                  value={identifier}
+                  onChange={(e) => setIdentifier(e.target.value)}
                   className="mt-1 block w-full text-gray-700 border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                 />
               </label>
@@ -145,6 +142,8 @@ const Header = () => {
                 <input
                   type="password"
                   required
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
                   className="text-gray-700 mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                 />
               </label>

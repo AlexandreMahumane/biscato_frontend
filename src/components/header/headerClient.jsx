@@ -1,27 +1,21 @@
 import { UserCircle } from "@phosphor-icons/react";
-
-import React, { useState } from "react";
+import React from "react";
 
 const HeaderClient = () => {
-  const [showFeedback, setShowFeedback] = useState(false);
-
   const handleFeedbackClick = () => {
-    setShowFeedback(true);
+    // Implementar lógica para mostrar o formulário de feedback
   };
 
-  
-
   const handleLogoutClick = () => {
-    console.log("Logout clicked");
-    localStorage.clear(); 
-    window.location.href = "/login"; 
+    localStorage.clear(); // Limpa os dados do localStorage
+    window.location.href = "/login"; // Redireciona para a página de login
   };
 
   return (
     <nav className="bg-blue-600 text-white py-4">
       <div className="container mx-auto flex justify-between items-center px-4">
         <div className="border-2 border-gray-300 rounded-lg px-2 flex items-center">
-          <p className="text-lg px-4 hover:text-blue-950 cursor-pointer">Biscato</p>
+          <p className="text-lg px-4 hover:text-blue-950 cursor-pointer">Logo</p>
         </div>
 
         <div className="hidden md:flex items-center">
@@ -51,9 +45,6 @@ const HeaderClient = () => {
           </button>
         </div>
       </div>
-
-      
-      
     </nav>
   );
 };
