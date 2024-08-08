@@ -1,49 +1,53 @@
+
+
+
 import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-import { Footer } from '../components/footer';
-import { Header } from '../components/header';
+import { Footer } from '../components/footer/index';
+import {Header} from '../components/header';
 
 export const ClientRegistrationForm = () => {
   const [name, setName] = useState('');
   const [phone, setPhone] = useState('');
+  
   const [password, setPassword] = useState('');
   const [successMessage, setSuccessMessage] = useState('');
   const [showOptions, setShowOptions] = useState(false);
+
+  const [location, setLocation] = useState('');
+  const [idCard, setIdCard] = useState(''); 
+  const [isSubmitting, setIsSubmitting] = useState(false); 
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setIsSubmitting(true);
     try {
       const response = await api.post('/user', {
         name,
         phone,
-        password
+        password,
+        location,
+        idCard 
       });
-      setSuccessMessage('Client registered successfully. Please verify OTP.');
       console.log(response.data);
 
       // Set a timeout to show options after a few seconds
       setTimeout(() => {
         setShowOptions(true);
       }, 3000);
-      navigate('/client')
-    } catch (error) {
-      console.error('Error registering client', error);
-    }
-  };
+      navigate('/clientPage'); 
 
-  const handleOptionClick = (option) => {
-    if (option === 'feedback') {
-      navigate('/feedback');
-    } else if (option === 'history') {
-      navigate('/dashboard');
+    } catch (error) {
+      console.error('Erro ao registrar cliente', error);
+      setIsSubmitting(false);
     }
   };
 
   return (
     <>
-      <Header />
+      <Header/>
       <div className="container mx-auto p-4">
         {!showOptions ? (
           <form onSubmit={handleSubmit} className="bg-gray-100 p-6 rounded-lg shadow-md max-w-md mx-auto">
@@ -105,6 +109,7 @@ export const ClientRegistrationForm = () => {
             </div>
           </div>
         )}
+        
       </div>
       <Footer />
     </>
