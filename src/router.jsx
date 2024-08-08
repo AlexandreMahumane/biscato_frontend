@@ -16,7 +16,7 @@ export const route = createBrowserRouter([
      element: <Main/>
     },
     {
-     path: "/clientmain",
+     path: "/client",
      element: <ClientMain/>
     },
     
