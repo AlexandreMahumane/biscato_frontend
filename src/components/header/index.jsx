@@ -1,17 +1,12 @@
+
 import { List } from "@phosphor-icons/react";
 import React, { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
-import Modal from "react-modal";
-import axios from 'axios';
+import { Link } from "react-router-dom";
 
-Modal.setAppElement('#root');
-
-const Header = () => {
+export const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [showLogin, setShowLogin] = useState(false);
-  const [identifier, setIdentifier] = useState('');
-  const [password, setPassword] = useState('');
-  const navigate = useNavigate();
+  const [showSignup, setShowSignup] = useState(false);
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -19,29 +14,39 @@ const Header = () => {
 
   const handleLoginClick = () => {
     setShowLogin(true);
+    setShowSignup(false);
     toggleMenu();
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      // Simula uma chamada de autenticação (substitua com sua lógica real)
       const response = await axios.post('/auth', {
         identifier,
         password
       });
+      setSuccessMessage('Login successfully.');
+  
+      console.log(response.data);
 
-      console.log('Login successful:', response.data);
-
-      // Redireciona para a página apropriada após o login
-      navigate("/client");
+      // Set a timeout to show options after a few seconds
+      setTimeout(() => {
+        setShowOptions(true);
+      }, 3000);
+      navigate('/client')
     } catch (error) {
-      console.error('Error logging in:', error);
+      console.error('Error Login user', error);
     }
+  };
+  const handleSignupClick = () => {
+    setShowSignup(true);
+    setShowLogin(false);
+    toggleMenu();
   };
 
   const handleCloseForms = () => {
     setShowLogin(false);
+    setShowSignup(false);
   };
 
   return (
@@ -59,10 +64,10 @@ const Header = () => {
             Encontrar Freelancer
           </Link>
           <Link to="/signup/freelancer" className="mr-4 text-lg hover:text-blue-950">
-            Tornar-se Freelancer
+            Encontrar Freelancer
           </Link>
           <Link to="/freelacerPage" className="mr-4 text-lg hover:text-blue-950">
-            Página Freelancer
+            pagina freelacerPage
           </Link>
 
           <div className="ml-4">
@@ -72,6 +77,12 @@ const Header = () => {
             >
               Login
             </button>
+            {/* <button
+              onClick={handleSignupClick}
+              className="bg-blue-700 hover:bg-blue-800 text-white px-4 py-2 rounded-lg ml-2"
+            >
+              Signup
+            </button> */}
           </div>
         </div>
 
@@ -92,13 +103,14 @@ const Header = () => {
               Home
             </Link>
             <Link to="/client" className="text-sm block py-1 hover:text-blue-600" onClick={toggleMenu}>
-              Cliente
+              Client
             </Link>
+            
             <Link to="/freelancerProfile" className="text-sm block py-1 hover:text-blue-600" onClick={toggleMenu}>
-              Perfil de Freelancer
+            FreelancerProfile
             </Link>
             <Link to="/searchFreelancer" className="text-sm block py-1 hover:text-blue-600" onClick={toggleMenu}>
-              Procurar Freelancer
+            SearchFreelancer
             </Link>
           </div>
           <div className="mt-4">
@@ -108,33 +120,34 @@ const Header = () => {
             >
               Login
             </button>
+            {/* <button
+              onClick={handleSignupClick}
+              className="block py-1 text-sm hover:text-blue-600"
+            >
+              Signup
+            </button> */}
           </div>
         </div>
       )}
 
       {/* Login Form */}
       {showLogin && (
-        <Modal
-          isOpen={showLogin}
-          onRequestClose={handleCloseForms}
-          contentLabel="Login"
-          className="fixed inset-0 flex items-center justify-center bg-gray-800 bg-opacity-75"
-          overlayClassName="fixed inset-0 bg-gray-800 bg-opacity-75"
-        >
+        <div className="fixed inset-0 flex items-center justify-center bg-gray-800 bg-opacity-75">
           <div className="bg-white p-6 rounded-lg shadow-md max-w-sm mx-auto relative">
-            <button onClick={handleCloseForms} className="absolute top-2 right-2 text-gray-500 hover:text-gray-700">
+            <button
+              onClick={handleCloseForms}
+              className="absolute top-2 right-2 text-gray-500 hover:text-gray-700"
+            >
               &times;
             </button>
             <h2 className="text-2xl font-semibold text-gray-800 mb-4">Login</h2>
-            <form onSubmit={handleSubmit}>
+            <form>
               <label className="block mb-4">
                 <span className="text-gray-700">Nome/Telefone</span>
                 <input
                   type="text"
                   required
-                  value={identifier}
-                  onChange={(e) => setIdentifier(e.target.value)}
-                  className="mt-1 block w-full text-gray-700 border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                  className="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                 />
               </label>
               <label className="block mb-4">
@@ -142,23 +155,67 @@ const Header = () => {
                 <input
                   type="password"
                   required
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                  className="text-gray-700 mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                  className="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                 />
               </label>
               <button
                 type="submit"
+                onSubmit={handleSubmit}
                 className="w-full bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50"
               >
                 Login
               </button>
             </form>
           </div>
-        </Modal>
+        </div>
+      )}
+
+      {/* Signup Form */}
+      {showSignup && (
+        <div className="fixed inset-0 flex items-center justify-center bg-gray-800 bg-opacity-75">
+          <div className="bg-white p-6 rounded-lg shadow-md max-w-sm mx-auto relative">
+            <button
+              onClick={handleCloseForms}
+              className="absolute top-2 right-2 text-gray-500 hover:text-gray-700"
+            >
+              &times;
+            </button>
+            <h2 className="text-2xl font-semibold text-gray-800 mb-4">Signup</h2>
+            <form>
+              <label className="block mb-4">
+                <span className="text-gray-700">Name:</span>
+                <input
+                  type="text"
+                  required
+                  className="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                />
+              </label>
+              <label className="block mb-4">
+                <span className="text-gray-700">Email:</span>
+                <input
+                  type="email"
+                  required
+                  className="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                />
+              </label>
+              <label className="block mb-4">
+                <span className="text-gray-700">Password:</span>
+                <input
+                  type="password"
+                  required
+                  className="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                />
+              </label>
+              <button
+                type="submit"
+                className="w-full bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50"
+              >
+                Signup
+              </button>
+            </form>
+          </div>
+        </div>
       )}
     </nav>
   );
 };
-
-export { Header };

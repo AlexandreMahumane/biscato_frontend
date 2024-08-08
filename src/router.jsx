@@ -1,3 +1,4 @@
+
 import { createBrowserRouter } from 'react-router-dom';
 import Main from './pages/main';
 import { ClientRegistrationForm } from './pages/ClientSignup';
@@ -7,13 +8,14 @@ import { FreelancerRegistrationForm } from './pages/FreelancerSignup';
 import ClientMain from './pages/ClientMain';
 
 
+
 export const route = createBrowserRouter([
     {
      path: "/",
      element: <Main/>
     },
     {
-     path: "/clientmain",
+     path: "/client",
      element: <ClientMain/>
     },
     
@@ -30,10 +32,12 @@ export const route = createBrowserRouter([
     element: <FreelancerProfile/>
     },
     {
+
     path: "/signup/freelancer",
     element: <FreelancerRegistrationForm/>
     },
    
+
 
    
    

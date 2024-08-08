@@ -1,9 +1,11 @@
 
 import React, { useState } from 'react';
 
+
 import { UserCircle } from "@phosphor-icons/react";
 import { Header } from '../components/header';
 import { Footer } from '../components/footer';
+
 
 const FreelancerPage = () => {
   const [historics, setHistorics] = useState([

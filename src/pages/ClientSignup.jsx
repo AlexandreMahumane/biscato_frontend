@@ -5,7 +5,9 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { Footer } from '../components/footer/index';
+
 import {Header} from '../components/header';
+
 
 export const ClientRegistrationForm = () => {
   const [name, setName] = useState('');
@@ -109,7 +111,7 @@ export const ClientRegistrationForm = () => {
             </div>
           </div>
         )}
-        
+
       </div>
       <Footer />
     </>

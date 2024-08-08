@@ -1,7 +1,7 @@
 import React, { useState, useRef } from 'react';
 import axios from 'axios';
-import { Header } from '../components/header';
 import { Footer } from '../components/footer';
+import Header from '../components/header';
 
 export const SearchFreelancer = () => {
   const [query, setQuery] = useState('');
@@ -64,7 +64,7 @@ export const SearchFreelancer = () => {
 
   return (
     <>
-      <Header />
+      <Header/>
       <div className="flex items-center justify-center min-h-screen bg-gray-100">
         <div className="bg-white p-6 rounded-lg shadow-lg max-w-lg w-full">
           <div className="mb-4">
