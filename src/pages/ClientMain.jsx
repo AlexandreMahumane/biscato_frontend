@@ -49,27 +49,28 @@ const ClientMain = () => {
     <>
       <Header showAlert={showAlert} setShowAlert={setShowAlert} />
       <div className="container mx-auto p-4 md:flex md:justify-between">
-        <div className={`bg-green-100 text-green-800 p-6 rounded-lg shadow-md max-w-md mx-auto mt-6 md:mr-4 transition-transform duration-300 hover:scale-105 ${expandedSection === null ? '' : 'hidden'}`}>
-          <h1 className="text-3xl font-semibold text-gray-800 mb-4">Welcome to Your Client Dashboard</h1>
-          <div className="flex justify-around">
-            <button
-              onClick={() => toggleExpandedSection('feedback')}
-              className="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded"
-            >
-              Send Feedback
-            </button>
-            <button
-              onClick={() => toggleExpandedSection('history')}
-              className="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded"
-            >
-              View History
-            </button>
-          </div>
-        </div>
+  <div className={`bg-green-200 space-y-32 text-green-800 p-6 rounded-lg shadow-md max-w-md mx-auto mt-6 md:mr-4 transition-transform duration-300 hover:scale-105 ${expandedSection === null ? '' : 'hidden'}`}>
+    <h1 className="text-3xl text-center  font-bold text-green-800 mb-4 md:mb-8">Welcome To Your Place</h1>
+    <div className="flex justify-around">
+      <button
+        onClick={() => toggleExpandedSection('feedback')}
+        className="bg-green-500 hover:bg-green-800 text-white font-bold py-2 px-4 rounded"
+      >
+        Send Feedback
+      </button>
+      <button
+        onClick={() => toggleExpandedSection('history')}
+        className="bg-green-500 hover:bg-green-800 text-white font-bold py-2 px-4 rounded"
+      >
+        View History
+      </button>
+    </div>
+  </div>
+
 
         
         {expandedSection === 'feedback' && (
-          <div className="bg-green-100 text-green-800 p-6 rounded-lg shadow-md max-w-md mx-auto mt-6 md:mr-4 transition-transform duration-300 hover:scale-105">
+          <div className="bg-green-200 text-green-800 p-6 rounded-lg shadow-md max-w-md mx-auto mt-6 md:mr-4 transition-transform duration-300 hover:scale-105">
             <div className="flex justify-end">
               <button className="text-gray-600 hover:text-gray-800 cursor-pointer" onClick={() => setExpandedSection(null)}>
                 <XCircle size={24} />
@@ -88,7 +89,7 @@ const ClientMain = () => {
             ></textarea>
             <button
               onClick={() => {  }}
-              className="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded"
+              className="bg-green-500 hover:bg-green-800 text-white font-bold py-2 px-4 rounded"
             >
               Submit Feedback
             </button>
@@ -96,7 +97,7 @@ const ClientMain = () => {
         )}
 
         {expandedSection === 'history' && (
-          <div className="bg-green-100 text-green-800 p-6 rounded-lg shadow-md max-w-md mx-auto mt-6 md:mr-4 transition-transform duration-300 hover:scale-105">
+          <div className="bg-green-200 text-green-800 p-6 rounded-lg shadow-md max-w-md mx-auto mt-6 md:mr-4 transition-transform duration-300 hover:scale-105">
             <div className="flex justify-end">
               <button className="text-gray-600 hover:text-gray-800 cursor-pointer" onClick={() => setExpandedSection(null)}>
                 <XCircle size={24} />
@@ -110,48 +111,49 @@ const ClientMain = () => {
           </div>
         )}
 
-        <div className={`bg-green-100 text-green-800 p-6 rounded-lg shadow-md max-w-md mx-auto mt-6 md:mr-4 transition-transform duration-300 hover:scale-105 ${expandedSection === null ? '' : 'hidden'}`}>
-          <h2 className="text-lg font-bold mb-4 text-center">Freelancer Information</h2>
-          <div className="mb-4">
-            <select
-              id="category"
-              value={category}
-              onChange={(e) => setCategory(e.target.value)}
-              className="select-category mt-2 w-full"
-            >
-              <option value="">Select a category</option>
-              <option value="electrician">Electrician</option>
-              <option value="plumber">Plumber</option>
-              <option value="carpenter">Carpenter</option>
-              <option value="designer">Designer</option>
-            </select>
-          </div>
-          <div className="mb-4">
-            <textarea
-              id="description"
-              value={description}
-              onChange={(e) => setDescription(e.target.value)}
-              placeholder="Enter your description..."
-              className="border border-gray-300 rounded-md p-2 w-full h-20 resize-none"
-            ></textarea>
-          </div>
-          <div className="flex justify-center items-center space-x-4">
-            <button
-              onClick={handleSearch}
-              className={`bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded cursor-pointer`}
-              disabled={loading || !category || !description}
-            >
-              {loading ? 'Sending...' : 'Send'}
-            </button>
-            <button
-              onClick={handleCancel}
-              className={`bg-gray-400 hover:bg-gray-500 text-white font-bold py-2 px-4 rounded cursor-pointer`}
-              disabled={loading}
-            >
-              Cancel
-            </button>
-          </div>
-        </div>
+<div className={`bg-green-200 text-green-800 p-6 rounded-lg shadow-md max-w-md mx-auto mt-6 md:mr-4 transition-transform duration-300 hover:scale-105 ${expandedSection === null ? '' : 'hidden'} ${expandedSection === null ? '' : 'w-full md:w-1/3 lg:w-1/4 xl:w-1/5'}`}>
+  <h2 className="text-3xl text-center  font-bold text-green-800 mb-4 md:mb-8">Freelancer Information</h2>
+  <div className="mb-4">
+    <select
+      id="category"
+      value={category}
+      onChange={(e) => setCategory(e.target.value)}
+      className="select-category mt-2 w-full"
+    >
+      <option value="">Select a category</option>
+      <option value="electrician">Electrician</option>
+      <option value="plumber">Plumber</option>
+      <option value="carpenter">Carpenter</option>
+      <option value="designer">Designer</option>
+    </select>
+  </div>
+  <div className="mb-4">
+    <textarea
+      id="description"
+      value={description}
+      onChange={(e) => setDescription(e.target.value)}
+      placeholder="Enter your description..."
+      className="border border-gray-300 rounded-md p-2 w-full h-20 resize-none"
+    ></textarea>
+  </div>
+  <div className="flex justify-center items-center space-x-4">
+    <button
+      onClick={handleSearch}
+      className={`bg-green-500 hover:bg-green-800 text-white font-bold py-2 px-4 rounded cursor-pointer`}
+      disabled={loading || !category || !description}
+    >
+      {loading ? 'Sending...' : 'Send'}
+    </button>
+    <button
+      onClick={handleCancel}
+      className={`bg-green-500 hover:bg-green-800 text-white font-bold py-2 px-4 rounded cursor-pointer`}
+      disabled={loading}
+    >
+      Cancel
+    </button>
+  </div>
+</div>
+
       </div>
 
       {loading && <p className="text-center text-gray-500">Loading...</p>}
