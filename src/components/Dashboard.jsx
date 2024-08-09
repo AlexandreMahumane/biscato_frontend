@@ -12,13 +12,13 @@ const Dashboard = () => {
       {
         label: 'Novos Freelancers',
         data: [30, 45, 35, 60, 50, 80, 70],
-        borderColor: 'rgba(75,192,192,1)',
-        backgroundColor: 'rgba(75,192,192,0.2)',
+        borderColor: 'rgba(76,193,192,2)',
+        backgroundColor: 'rgba(67, 97, 238)',
         borderWidth: 2,
       },
       {
         label: 'Novos Clientes',
-        data: [20, 30, 40, 50, 60, 70, 90],
+        data: [30, 30, 40, 50, 60, 70, 90],
         borderColor: 'rgba(153,102,255,1)',
         backgroundColor: 'rgba(153,102,255,0.2)',
         borderWidth: 2,
@@ -32,8 +32,8 @@ const Dashboard = () => {
       {
         label: 'Solicitações de Serviço',
         data: [300, 150,],
-        backgroundColor: ['rgba(255,99,132,0.2)', 'rgba(54,162,235,0.2)', 'rgba(255,206,86,0.2)'],
-        borderColor: ['rgba(255,99,132,1)', 'rgba(54,162,235,1)', 'rgba(255,206,86,1)'],
+        backgroundColor: ['rgba(247, 37, 133)', 'rgba(72, 12, 168)', 'rgba(114, 9, 183)'],
+        borderColor: ['rgba(204, 213, 174)', 'rgba(212, 163, 115)', 'rgba(114, 9, 183)'],
         borderWidth: 1,
       },
     ],
@@ -77,8 +77,8 @@ const Dashboard = () => {
             }} />
           </div>
         </div>
-        <div className="bg-white p-6 rounded-lg shadow-lg">
-          <h3 className="text-2xl font-semibold mb-4 text-gray-700">Distribuição de Solicitações de Serviço</h3>
+        <div className="bg-blue-500 p-6 rounded-lg shadow-lg">
+          <h3 className="text-2xl font-semibold mb-4 text-emerald-50">Distribuição de Solicitações de Serviço</h3>
           <div className="w-[300px] h-[300px]">
             <Pie data={pieData} options={{
               responsive: true,
