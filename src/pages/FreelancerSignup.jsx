@@ -5,14 +5,16 @@ import { api } from "../apiConfig";
 import { Footer } from "../components/footer";
 
 export const FreelancerRegistrationForm = () => {
-  const [name, setName] = useState("");
-  const [phone, setPhone] = useState("");
-  const [category, setCategory] = useState("");
-  const [description, setDescription] = useState("");
-  const [documentType, setDocumentType] = useState("");
-  const [documentId, setDocumentId] = useState("");
-  const [password, setPassword] = useState("");
-  const [successMessage, setSuccessMessage] = useState("");
+
+  const [name, setName] = useState('');
+  const [phone, setPhone] = useState('');
+  const [documentType, setDocumentType] = useState('');
+  const [password, setPassword] = useState('');
+  const [documentId, setDocumentId] = useState('');
+  const [category, setCategory] = useState('');
+  const [description, setDescription] = useState('');
+  const [successMessage, setSuccessMessage] = useState('');
+
   const [showOptions, setShowOptions] = useState(false);
   const [categoryList, setCategoryList] = useState([]);
   const navigate = useNavigate();
@@ -41,14 +43,21 @@ export const FreelancerRegistrationForm = () => {
         documentType,
         documentId,
         password,
+
+        category,
+        description
       });
-      setSuccessMessage("Freelancer registered successfully. Please verify OTP.");
+      setSuccessMessage('Cadastro realizado com sucesso. Por favor, verifique o OTP.');
+      console.log(response.data);
+
       setTimeout(() => {
         setShowOptions(true);
       }, 3000);
-      navigate("/FreelancerProfile");
+      navigate('/FreelancerProfile');
+
     } catch (error) {
-      console.error("Error registering freelancer", error);
+      console.error('Erro ao registrar freelancer', error);
+
     }
   };
 
@@ -65,69 +74,77 @@ export const FreelancerRegistrationForm = () => {
       <Header />
       <div className="container mx-auto p-4">
         {!showOptions ? (
-          <form
-            onSubmit={handleSubmit}
-            className="bg-gray-100 p-6 rounded-lg shadow-md max-w-md mx-auto"
-          >
-            <h2 className="text-2xl font-semibold text-gray-800 mb-4">
-              Register as Freelancer
-            </h2>
+
+          <form onSubmit={handleSubmit} className="bg-blue-50 text-blue-900 p-6 rounded-lg shadow-md max-w-md mx-auto">
+            <h2 className="text-2xl font-semibold text-blue-900 mb-4 text-center">Freelancer Registration</h2>
+
             <label className="block mb-4">
-              <span className="text-gray-700">Name:</span>
+              <span className="text-blue-700">Name:</span>
               <input
                 type="text"
                 value={name}
                 onChange={(e) => setName(e.target.value)}
                 required
-                className="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                className="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
               />
             </label>
             <label className="block mb-4">
-              <span className="text-gray-700">Phone:</span>
+
+              <span className="text-blue-700">Phone:</span>
+
               <input
                 type="text"
                 value={phone}
                 onChange={(e) => setPhone(e.target.value)}
                 required
-                className="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                className="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
               />
             </label>
             <label className="block mb-4">
-              <span className="text-gray-700">Document Type:</span>
+
+              <span className="text-blue-700">Document Type:</span>
               <select
-                className="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                 value={documentType}
                 onChange={(e) => setDocumentType(e.target.value)}
+                className="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
               >
-                <option value="id">BI</option>
-                <option value="passport">Passaporte</option>
+                <option value="">Select Document Type</option>
+                <option value="id">ID</option>
+                <option value="passport">Passport</option>
               </select>
             </label>
             <label className="block mb-4">
-              <span className="text-gray-700">Document ID:</span>
+              <span className="text-blue-700">Document Number:</span>
+
               <input
                 type="text"
                 value={documentId}
                 onChange={(e) => setDocumentId(e.target.value)}
                 required
-                className="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                className="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
               />
             </label>
             <label className="block mb-4">
-              <span className="text-gray-700">Password:</span>
+
+              <span className="text-blue-700">Password:</span>
+
               <input
                 type="password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 required
-                className="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                className="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
               />
             </label>
-            <div className="mb-4">
+
+            <label className="block mb-4">
+              <span className="text-blue-700">Category:</span>
+
               <select
                 id="category"
                 value={category}
                 onChange={(e) => setCategory(e.target.value)}
+
                 className="select-category mt-2 w-full"
               >
                 <option value="">Select a category</option>
@@ -139,34 +156,41 @@ export const FreelancerRegistrationForm = () => {
               </select>
             </div>
             <div className="mb-4">
+
               <textarea
                 id="description"
                 value={description}
                 onChange={(e) => setDescription(e.target.value)}
                 placeholder="Enter your description..."
-                className="border border-gray-300 rounded-md p-2 w-full h-20 resize-none"
+
+                className="border border-gray-300 rounded-md p-2 w-full h-20 resize-none focus:ring-blue-500 focus:border-blue-500"
               ></textarea>
-            </div>
+            </label>
+
             <button
               type="submit"
-              className="w-full bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50"
+              className="w-full bg-blue-500 hover:bg-blue-700 text-white py-2 px-4 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50"
             >
               Register
             </button>
           </form>
         ) : (
-          <div className="bg-green-100 text-green-800 p-6 rounded-lg shadow-md max-w-md mx-auto">
-            <h2 className="text-2xl font-semibold mb-4">{successMessage}</h2>
-            <div className="flex justify-around mt-4">
+          <div className="bg-blue-100 text-blue-800 p-6 rounded-lg shadow-md max-w-md mx-auto mt-4">
+            <h2 className="text-2xl font-semibold mb-4 text-center">{successMessage}</h2>
+            <div className="flex flex-col md:flex-row md:justify-around mt-4">
               <button
-                onClick={() => handleOptionClick("feedback")}
-                className="bg-green-500 text-white py-2 px-4 rounded-md hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-opacity-50"
+
+                onClick={() => handleOptionClick('feedback')}
+                className="bg-blue-500 hover:bg-blue-700 text-white py-2 px-4 rounded-md mb-2 md:mb-0 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50"
+
               >
                 Give Feedback
               </button>
               <button
-                onClick={() => handleOptionClick("history")}
-                className="bg-green-500 text-white py-2 px-4 rounded-md hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-opacity-50"
+
+                onClick={() => handleOptionClick('history')}
+                className="bg-blue-500 hover:bg-blue-700 text-white py-2 px-4 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50"
+
               >
                 View History
               </button>

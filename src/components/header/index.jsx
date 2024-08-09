@@ -12,7 +12,7 @@ export const Header = ({ userType }) => {
   const [password, setPassword] = useState('');
   const [successMessage, setSuccessMessage] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
-  const [showOptions, setShowOptions] = useState(false); // Adicionado para mostrar opções após login
+  const [showOptions, setShowOptions] = useState(false);
   const navigate = useNavigate();
 
   const toggleMenu = () => {
@@ -88,7 +88,7 @@ export const Header = ({ userType }) => {
         </div>
 
         <div className="flex items-center">
-          <div className="ml-4">
+          <div className="hidden md:block ml-4">
             <button
               onClick={handleLoginClick}
               className="bg-blue-700 hover:bg-blue-800 text-white px-6 py-3 rounded-lg font-bold"
@@ -129,19 +129,18 @@ export const Header = ({ userType }) => {
             >
               Encontrar Trabalho
             </NavLink>
-          </div>
-          <div className="mt-4">
-            <button
-              onClick={handleLoginClick}
-              className="block py-2 px-4 text-lg font-bold hover:text-blue-600"
-            >
-              Login
-            </button>
+            <div className="mt-4">
+              <button
+                onClick={handleLoginClick}
+                className="block py-2 px-4 text-lg font-bold hover:text-blue-600"
+              >
+                Login
+              </button>
+            </div>
           </div>
         </div>
       )}
 
-      {/* Login Form */}
       {showLogin && (
         <div className="fixed inset-0 flex items-center justify-center bg-gray-800 bg-opacity-75">
           <div className="bg-white p-6 rounded-lg shadow-md max-w-sm mx-auto relative">
@@ -151,28 +150,28 @@ export const Header = ({ userType }) => {
             >
               &times;
             </button>
-            <h2 className="text-2xl font-semibold text-gray-800 mb-4">Login</h2>
+            <h2 className="text-2xl font-semibold text-blue-700 text-center mb-4">Login</h2>
             <form onSubmit={handleSubmit}>
               <label className="block mb-4">
-                <span className="text-gray-700">Nome/Telefone</span>
+                <span className="text-blue-700">Nome/Telefone</span>
                 <input
                   type="text"
                   required
-                  className="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                  className="mt-1 block w-full border-gray-600 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                   value={identifier}
                   onChange={(e) => setIdentifier(e.target.value)}
                 />
               </label>
               <label className="block mb-4">
-                <span className="text-gray-700">Senha</span>
-                <input
-                  type="password"
-                  required
-                  className="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                />
-              </label>
+              <span className="text-blue-700">Password:</span>
+              <input
+                type="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                required
+                className="mt-1 block w-full border-gray-600 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+              />
+            </label>
               {errorMessage && (
                 <p className="text-red-500 mb-4">{errorMessage}</p>
               )}

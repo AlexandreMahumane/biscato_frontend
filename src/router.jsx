@@ -1,6 +1,6 @@
 
 import { createBrowserRouter } from 'react-router-dom';
-import Main from './pages/main';
+import Main from './pages/Home';
 import { ClientRegistrationForm } from './pages/ClientSignup';
 import { FreelancerRegistrationForm } from './pages/FreelancerSignup';
 import ClientMain from './pages/ClientMain';
