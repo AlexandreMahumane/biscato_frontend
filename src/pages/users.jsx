@@ -125,8 +125,8 @@ export const Users = () => {
   };
 
   return (
-    <div className="p-4">
-      <h1 className="text-2xl font-bold mb-4">Lista de Trabalhadores Freelancer</h1>
+    <div className="p-4 bg-blue-600 text-white">
+      <h1 className="text-2xl font-bold mb-4 text-center">Lista de Trabalhadores Freelancer</h1>
       <div className="mb-4">
         <button
           className="btn btn-primary"
@@ -159,7 +159,7 @@ export const Users = () => {
           </thead>
           <tbody>
             {users.map(user => (
-              <tr key={user.id} className="hover:bg-blue-100">
+              <tr key={user.id} className="hover:bg-blue-700">
                 <th>
                   <label>
                     <input
@@ -196,22 +196,21 @@ export const Users = () => {
               </tr>
             ))}
           </tbody>
-          {/* Rodapé */}
+         
           <tfoot>
             <tr>
               <th></th>
               <th>Nome</th>
               <th>Trabalho</th>
               <th>Localização</th>
-              <th></th> {/* Espaço para a coluna de excluir */}
+              <th></th>
             </tr>
           </tfoot>
         </table>
       </div>
 
-      {/* Seção de Comentários */}
       <div className="mt-8">
-        <h2 className="text-xl font-bold mb-4">Comentários das Pessoas que Requisitaram os Serviços</h2>
+        <h2 className="text-2xl font-bold mb-4 text-center">Comentários das Pessoas que Requisitaram os Serviços</h2>
         <div className="mb-4">
           <button
             className="btn btn-primary"
@@ -234,13 +233,13 @@ export const Users = () => {
             <span className="ml-2">Selecionar Todos</span>
           </div>
           {comments.map((comment, index) => (
-            <div key={index} className="p-4 border border-gray-300 rounded-md bg-gray-50 hover:bg-blue-100">
+            <div key={index} className="p-4 border border-gray-300 rounded-md bg-blue-700 hover:bg-blue-800">
               <div className="flex items-center gap-2 mb-2">
                 <div className="flex-shrink-0 h-8 w-8 bg-gray-300 rounded-full"></div>
                 <div>
                   <div className="font-bold">{comment.userName}</div>
-                  <div className="text-sm text-gray-500">Data e Hora: {comment.dateTime}</div>
-                  <div className="text-sm text-gray-500">Tipo de Serviço: {comment.serviceType}</div>
+                  <div className="text-sm text-gray-200">Data e Hora: {comment.dateTime}</div>
+                  <div className="text-sm text-gray-200">Tipo de Serviço: {comment.serviceType}</div>
                 </div>
               </div>
               <p>{comment.comment}</p>

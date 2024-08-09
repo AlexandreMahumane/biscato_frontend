@@ -1,5 +1,4 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import { ResponsivePieCanvas } from '@nivo/pie';
 import './heroSection/index'; 
 
@@ -16,22 +15,18 @@ export const Profissionais = () => {
         { id: "Tecnico de informatica", label: "Tecnico de Informática", value: 473, color: "hsl(25, 70%, 50%)" },
         { id: "Polidor de parede", label: "Polidor de Parede", value: 171, color: "hsl(190, 70%, 50%)" },
         { id: "Florista", label: "Florista", value: 457, color: "hsl(7, 70%, 50%)" },
-        { id: "Rust", label: "Rust", value: 280, color: "hsl(207, 70%, 50%)" },
-        { id: "Javascript", label: "Javascript", value: 484, color: "hsl(272, 70%, 50%)" },
         { id: "Scala", label: "Scala", value: 247, color: "hsl(314, 70%, 50%)" },
         { id: "Hack", label: "Hack", value: 337, color: "hsl(283, 70%, 50%)" },
         { id: "Pintor", label: "Pintor", value: 311, color: "hsl(174, 70%, 50%)" },
         { id: "Python", label: "Python", value: 380, color: "hsl(116, 70%, 50%)" },
-        { id: "Ruby", label: "Ruby", value: 597, color: "hsl(33, 70%, 50%)" },
-        { id: "Stylus", label: "Stylus", value: 84, color: "hsl(212, 70%, 50%)" }
     ];
 
     return (
-        <div className="w-full h-[500px] p-4">
-            <div className="h-full">
+        <div className="w-full flex items-center justify-center p-4">
+            <div className="w-full max-w-4xl">
                 <ResponsivePieCanvas
                     data={data}
-                    margin={{ top: 40, right: 200, bottom: 40, left: 80 }}
+                    margin={{ top: 40, right: 80, bottom: 40, left: 80 }}
                     innerRadius={0.5}
                     padAngle={0.7}
                     cornerRadius={3}
@@ -75,22 +70,21 @@ export const Profissionais = () => {
                         { match: { id: 'Polidor de parede' }, id: 'lines' },
                         { match: { id: 'Pintor' }, id: 'lines' },
                         { match: { id: 'Florista' }, id: 'lines' },
-                        { match: { id: 'Javascript' }, id: 'lines' }
                     ]}
                     legends={[
                         {
-                            anchor: 'right',
-                            direction: 'column',
+                            anchor: 'bottom',
+                            direction: 'row',
                             justify: false,
-                            translateX: 140,
-                            translateY: 0,
-                            itemsSpacing: 2,
-                            itemWidth: 60,
-                            itemHeight: 14,
+                            translateX: 0,
+                            translateY: 50,
+                            itemsSpacing: 0,
+                            itemWidth: 100,
+                            itemHeight: 20,
                             itemTextColor: '#999',
                             itemDirection: 'left-to-right',
                             itemOpacity: 1,
-                            symbolSize: 14,
+                            symbolSize: 20,
                             symbolShape: 'circle'
                         }
                     ]}
@@ -99,4 +93,3 @@ export const Profissionais = () => {
         </div>
     );
 };
-
