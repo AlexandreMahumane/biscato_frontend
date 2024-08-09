@@ -4,7 +4,6 @@ import axios from 'axios';
 import HeaderClient from "./headerClient";
 import { api } from "../../apiConfig";
 
-
 export const Header = ({ userType }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [showLogin, setShowLogin] = useState(false);
@@ -12,8 +11,9 @@ export const Header = ({ userType }) => {
   const [identifier, setIdentifier] = useState('');
   const [password, setPassword] = useState('');
   const [successMessage, setSuccessMessage] = useState('');
-  const [errorMessage, setErrorMessage] = useState(''); // Adicionado para mensagens de erro
-  const navigate = useNavigate(); // Adicionado para navegação
+  const [errorMessage, setErrorMessage] = useState('');
+  const [showOptions, setShowOptions] = useState(false); // Adicionado para mostrar opções após login
+  const navigate = useNavigate();
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -23,6 +23,7 @@ export const Header = ({ userType }) => {
     e.preventDefault();
     
     try {
+<<<<<<< HEAD
       console.log({ identifier, password })
       const response = await api.post('/auth', { identifier, password });
       setSuccessMessage('Login successful');
@@ -35,6 +36,22 @@ export const Header = ({ userType }) => {
     } catch (error) {
       console.error('Error logging in user', error);
       setErrorMessage('Invalid credentials, please try again.'); 
+=======
+      const response = await axios.post('/auth', {
+        identifier,
+        password
+      });
+      setSuccessMessage('Login successfully.');
+      console.log(response.data);
+
+      setTimeout(() => {
+        setShowOptions(true);
+      }, 3000);
+      navigate('/client');
+    } catch (error) {
+      console.error('Error logging in user', error);
+      setErrorMessage('Invalid credentials, please try again.');
+>>>>>>> e742b2e31ed6599340352005ad5c6783dac3129f
     }
   };
 
@@ -58,27 +75,29 @@ export const Header = ({ userType }) => {
       <div className="container mx-auto flex justify-between items-center px-4">
         <div className="flex items-center">
           <div className="border-2 border-gray-300 rounded-lg px-2 flex items-center">
-            <p className="text-lg font-bold px-4 hover:text-blue-950 cursor-pointer">Biscato</p>
-          </div>
-
-          <div className="ml-4 md:hidden">
-            <button
-              className="text-white focus:outline-none hover:text-blue-950 font-bold"
-              onClick={toggleMenu}
-            >
-              Menu
-            </button>
+            <h1 className="text-2xl font-bold px-4 py-2 transition-all duration-300 ease-in-out transform hover:text-blue-500 hover:scale-105 glow-effect">
+              BISCATO
+            </h1>
           </div>
         </div>
 
         <div className="hidden md:flex flex-grow justify-center items-center">
-          <NavLink exact to="/" className="mr-4 text-lg font-bold hover:text-blue-950" activeClassName="text-blue-950">
+          <NavLink
+            to="/"
+            className={({ isActive }) => `mr-4 text-lg transition-all duration-300 ease-in-out transform ${isActive ? 'text-blue-950' : 'hover:text-blue-500 hover:scale-105'} glow-effect`}
+          >
             Home
           </NavLink>
-          <NavLink to="/signup/client" className="mr-4 text-lg font-bold hover:text-blue-950" activeClassName="text-blue-950">
+          <NavLink
+            to="/signup/client"
+            className={({ isActive }) => `mr-4 text-lg transition-all duration-300 ease-in-out transform ${isActive ? 'text-blue-950' : 'hover:text-blue-500 hover:scale-105'} glow-effect`}
+          >
             Encontrar Freelancer
           </NavLink>
-          <NavLink to="/signup/freelancer" className="mr-4 text-lg font-bold hover:text-blue-950" activeClassName="text-blue-950">
+          <NavLink
+            to="/signup/freelancer"
+            className={({ isActive }) => `mr-4 text-lg transition-all duration-300 ease-in-out transform ${isActive ? 'text-blue-950' : 'hover:text-blue-500 hover:scale-105'} glow-effect`}
+          >
             Encontrar Trabalho
           </NavLink>
         </div>
@@ -107,13 +126,22 @@ export const Header = ({ userType }) => {
       {isMenuOpen && (
         <div className="md:hidden bg-blue-600 text-white py-2 px-4">
           <div className="flex flex-col gap-2">
-            <NavLink exact to="/" className="text-lg font-bold hover:text-blue-950" activeClassName="text-blue-950">
+            <NavLink
+              to="/"
+              className={({ isActive }) => `mr-4 text-lg transition-all duration-300 ease-in-out transform ${isActive ? 'text-blue-950' : 'hover:text-blue-500 hover:scale-105'} glow-effect`}
+            >
               Home
             </NavLink>
-            <NavLink to="/signup/client" className="text-lg font-bold hover:text-blue-950" activeClassName="text-blue-950">
+            <NavLink
+              to="/signup/client"
+              className={({ isActive }) => `mr-4 text-lg transition-all duration-300 ease-in-out transform ${isActive ? 'text-blue-950' : 'hover:text-blue-500 hover:scale-105'} glow-effect`}
+            >
               Encontrar Freelancer
             </NavLink>
-            <NavLink to="/signup/freelancer" className="text-lg font-bold hover:text-blue-950" activeClassName="text-blue-950">
+            <NavLink
+              to="/signup/freelancer"
+              className={({ isActive }) => `mr-4 text-lg transition-all duration-300 ease-in-out transform ${isActive ? 'text-blue-950' : 'hover:text-blue-500 hover:scale-105'} glow-effect`}
+            >
               Encontrar Trabalho
             </NavLink>
           </div>
