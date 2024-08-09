@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Modal from 'react-modal';
 import { Footer } from '../components/footer';
-import {Header} from '../components/header';
+import HeaderClient from '../components/header/headerClient';
 
 Modal.setAppElement('#root');
 
@@ -38,7 +38,7 @@ const ClientPage = () => {
 
   return (
     <>
-      <Header/>
+      <HeaderClient/>
       <div className="container mx-auto p-4">
         <h1 className="text-3xl font-semibold text-gray-800 mb-4">Welcome to Your Client Dashboard</h1>
         <p>Your registration was successful. Explore your dashboard to get started.</p>

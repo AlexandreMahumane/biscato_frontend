@@ -1,9 +1,11 @@
 
 import React, { useState } from 'react';
-import { Footer } from '../components/footer';
-import { Header } from '../components/header';
+
+
 import { UserCircle } from "@phosphor-icons/react";
-import ModalComponent from '../components/ModalComponent';
+import { Footer } from '../components/footer';
+import HeaderClient from '../components/header/headerClient';
+
 
 const FreelancerPage = () => {
   const [historics, setHistorics] = useState([
@@ -31,7 +33,7 @@ const FreelancerPage = () => {
 
   return (
     <div>
-      <Header />
+      <HeaderClient />
       <main className="p-4 flex flex-col lg:flex-row gap-8">
         
         <div className="flex-1 flex flex-col gap-8">

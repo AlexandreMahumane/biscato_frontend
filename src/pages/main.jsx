@@ -5,6 +5,7 @@ import {Header} from "../components/header";
 
 import HeroSection from "../components/heroSection";
 import { AboutTheApp } from "../components/info";
+
 export const Main = () =>{
     return(
         <div className="sm:p-2">
