@@ -1,11 +1,8 @@
-
 import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-import HeaderClient from '../components/header/headerClient';
-import { api } from '../apiConfig';
-
-
+import {Footer }from '../components/footer';
+import Header from '../components/header';
 
 export const ClientRegistrationForm = () => {
   const [name, setName] = useState('');
@@ -13,7 +10,7 @@ export const ClientRegistrationForm = () => {
   const [password, setPassword] = useState('');
   const [location, setLocation] = useState('');
   const [idCard, setIdCard] = useState('');
-  const [acceptTerms, setAcceptTerms] = useState(false); // Estado para aceitação dos termos
+  const [acceptTerms, setAcceptTerms] = useState(false);
   const [successMessage, setSuccessMessage] = useState('');
   const [showOptions, setShowOptions] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -27,10 +24,12 @@ export const ClientRegistrationForm = () => {
     }
     setIsSubmitting(true);
     try {
-      const response = await api.post('/user', {
+      const response = await axios.post('/user', {
         name,
         phone,
         password,
+        location,
+        idCard
       });
       console.log(response.data);
 
@@ -48,45 +47,42 @@ export const ClientRegistrationForm = () => {
 
   return (
     <>
-      <HeaderClient/>
-      <div> 
-        <img src="" alt="" />
-      </div>
+      <Header />
       <div className="container mx-auto p-4">
         {!showOptions ? (
-          <form onSubmit={handleSubmit} className="bg-gray-100 p-6 rounded-lg shadow-md max-w-md mx-auto">
-            <h2 className="text-2xl font-semibold text-gray-800 mb-4">Client Registration</h2>
+          <form onSubmit={handleSubmit} className="bg-blue-50 p-6 rounded-lg shadow-md max-w-md mx-auto">
+            <h2 className="text-2xl font-semibold text-blue-900 mb-4">Client Registration</h2>
             <label className="block mb-4">
-              <span className="text-gray-700">Name:</span>
+              <span className="text-blue-700">Name:</span>
               <input
                 type="text"
                 value={name}
                 onChange={(e) => setName(e.target.value)}
                 required
-                className="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                className="mt-1 block w-full border-blue-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
               />
             </label>
             <label className="block mb-4">
-              <span className="text-gray-700">Telefone:</span>
+              <span className="text-blue-700">Telefone:</span>
               <input
                 type="text"
                 value={phone}
                 onChange={(e) => setPhone(e.target.value)}
                 required
-                className="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                className="mt-1 block w-full border-blue-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
               />
             </label>
             <label className="block mb-4">
-              <span className="text-gray-700">Senha:</span>
+              <span className="text-blue-700">Senha:</span>
               <input
                 type="password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 required
-                className="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                className="mt-1 block w-full border-blue-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
               />
             </label>
-            <label className="block mb-4">
+            <label className="block mb-4 items-center">
               <input
                 type="checkbox"
                 checked={acceptTerms}
@@ -94,7 +90,7 @@ export const ClientRegistrationForm = () => {
                 required
                 className="mr-2"
               />
-              <span className="text-gray-700">
+              <span className="text-blue-700">
                 Aceito os <a href="/terms" className="text-blue-600 hover:underline">termos e condições</a>
               </span>
             </label>
@@ -110,18 +106,18 @@ export const ClientRegistrationForm = () => {
             </p>
           </form>
         ) : (
-          <div className="bg-green-100 text-green-800 p-6 rounded-lg shadow-md max-w-md mx-auto">
+          <div className="bg-blue-50 text-blue-900 p-6 rounded-lg shadow-md max-w-md mx-auto">
             <h2 className="text-2xl font-semibold mb-4">{successMessage}</h2>
-            <div className="flex justify-around mt-4">
+            <div className="flex flex-wrap justify-around mt-4">
               <button
                 onClick={() => handleOptionClick('feedback')}
-                className="bg-green-500 text-white py-2 px-4 rounded-md hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-opacity-50"
+                className="bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 mb-2"
               >
                 Give Feedback
               </button>
               <button
                 onClick={() => handleOptionClick('history')}
-                className="bg-green-500 text-white py-2 px-4 rounded-md hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-opacity-50"
+                className="bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 mb-2"
               >
                 View History
               </button>
