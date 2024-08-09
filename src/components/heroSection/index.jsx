@@ -13,7 +13,7 @@ export const App = () => {
         <Swiper
           spaceBetween={0}
           slidesPerView={1}
-          autoplay={{ delay: 3000 }} // Rotaciona a cada 3 segundos
+          autoplay={{ delay: 5000 }} // Rotaciona a cada 3 segundos
           loop={true} // Permite rotação infinita
         >
           {[
@@ -71,16 +71,29 @@ export const App = () => {
       </div>
 
       {/* Hero Section */}
-      <section className="relative w-screen h-screen flex justify-center items-center text-white">
-        <div
-          className="absolute inset-0 bg-cover bg-center"
-          style={{ backgroundImage: `url(${photos})` }}
-        >
-          <div className="relative z-10 p-4 bg-black rounded-lg">
-          
-            
-          </div>
-        </div>
+      <section className="    text-white">
+      <div className="mr-10 justify-center space-x-3 items-center flex rounded-box">
+  <div className="w-[460px] h-[440px] ">
+    <img
+      src="https://img.freepik.com/free-photo/african-american-car-mechanic-with-face-mask-examining-engine-breakdown-workshop_637285-8620.jpg?t=st=1723200001~exp=1723203601~hmac=10a50e42bc87a8eec9d051f82eaa2ef0c0a13d9dc7cfbe87473733d804b609f3&w=996"
+      alt="Burger" 
+      className="h-full"/>
+      
+  </div>
+  <div className="w-[460px] h-[440px] ">
+    <img
+      src="https://img.freepik.com/free-photo/young-african-american-builder-man-wearing-construction-vest-safety-helmet-holding-paint-roller-paint-brush-standing-with-confused-expression-with-arms-hands-raised_141793-19043.jpg?t=st=1723200160~exp=1723203760~hmac=93139a66d28feb6d22982a9a8b796a5be9c16fa3bb59b9ca8a7d38deb68f7ff0&w=996"
+      alt="Burger"
+      className="h-full" />
+  </div>
+  <div className="w-[460px] h-[440px] ">
+    <img
+      src="https://img.freepik.com/free-photo/monochrome-scene-depicting-life-workers-construction-industry-site_23-2151431548.jpg?t=st=1723200410~exp=1723204010~hmac=f581fa2d39c81f8ef0939c844bcfd4f5a8aeb48499b74c1bee23d726f589d400&w=1060"
+      alt="Burger" 
+      className="h-full"/>
+  </div>
+  
+</div>
       </section>
     </div>
   );
