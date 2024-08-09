@@ -8,6 +8,7 @@ import { FreelancerRegistrationForm } from './pages/FreelancerSignup';
 import ClientPage from './pages/clientPage';
 import ClientMain from './pages/ClientMain';
 import OtpPage from './pages/OtpPage';
+import LocationPage from './pages/LocationPage';
 
 
 
@@ -37,6 +38,11 @@ export const route = createBrowserRouter([
 
     path: "/signup/freelancer",
     element: <FreelancerRegistrationForm/>
+    },
+    {
+
+    path: "/LocationPage",
+    element: <LocationPage/>
     },
     {
 
