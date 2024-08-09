@@ -35,7 +35,7 @@ export const FreelancerRegistrationForm = () => {
         setShowOptions(true);
       }, 3000);
       navigate('/FreelancerProfile');
-      
+
     } catch (error) {
       console.error('Erro ao registrar freelancer', error);
     }
@@ -108,7 +108,8 @@ export const FreelancerRegistrationForm = () => {
                 className="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
               />
             </label>
-            <div className="mb-4">
+            <label className="block mb-4">
+              <span className="text-blue-700">Category:</span>
               <select
                 id="category"
                 value={category}
@@ -121,8 +122,9 @@ export const FreelancerRegistrationForm = () => {
                 <option value="carpenter">Carpenter</option>
                 <option value="designer">Designer</option>
               </select>
-            </div>
-            <div className="mb-4">
+            </label>
+            <label className="block mb-4">
+              <span className="text-blue-700">Description:</span>
               <textarea
                 id="description"
                 value={description}
@@ -130,27 +132,27 @@ export const FreelancerRegistrationForm = () => {
                 placeholder="Enter your description..."
                 className="border border-gray-300 rounded-md p-2 w-full h-20 resize-none focus:ring-blue-500 focus:border-blue-500"
               ></textarea>
-            </div>
+            </label>
             <button
               type="submit"
-              className="w-full bg-blue-500 hover:bg-blue-700 text-white py-2 px-4 rounded-md  focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50"
+              className="w-full bg-blue-500 hover:bg-blue-700 text-white py-2 px-4 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50"
             >
               Register
             </button>
           </form>
         ) : (
           <div className="bg-blue-100 text-blue-800 p-6 rounded-lg shadow-md max-w-md mx-auto mt-4">
-            <h2 className="text-2xl font-semibold mb-4">{successMessage}</h2>
-            <div className="flex justify-around mt-4">
+            <h2 className="text-2xl font-semibold mb-4 text-center">{successMessage}</h2>
+            <div className="flex flex-col md:flex-row md:justify-around mt-4">
               <button
                 onClick={() => handleOptionClick('feedback')}
-                className="bg-blue-500 hover:bg-blue-700 text-white py-2 px-4 rounded-md  focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50"
+                className="bg-blue-500 hover:bg-blue-700 text-white py-2 px-4 rounded-md mb-2 md:mb-0 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50"
               >
                 Give Feedback
               </button>
               <button
                 onClick={() => handleOptionClick('history')}
-                className="bg-blue-500 hover:bg-blue-700 text-white py-2 px-4 rounded-md  focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50"
+                className="bg-blue-500 hover:bg-blue-700 text-white py-2 px-4 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50"
               >
                 View History
               </button>

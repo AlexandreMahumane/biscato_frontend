@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-import HeaderClient from '../components/header/headerClient';
 import Footer from '../components/footer';
+import Header from '../components/header';
 
 export const ClientRegistrationForm = () => {
   const [name, setName] = useState('');
@@ -10,7 +10,7 @@ export const ClientRegistrationForm = () => {
   const [password, setPassword] = useState('');
   const [location, setLocation] = useState('');
   const [idCard, setIdCard] = useState('');
-  const [acceptTerms, setAcceptTerms] = useState(false); // Estado para aceitação dos termos
+  const [acceptTerms, setAcceptTerms] = useState(false);
   const [successMessage, setSuccessMessage] = useState('');
   const [showOptions, setShowOptions] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -47,7 +47,7 @@ export const ClientRegistrationForm = () => {
 
   return (
     <>
-      <HeaderClient />
+      <Header />
       <div className="container mx-auto p-4">
         {!showOptions ? (
           <form onSubmit={handleSubmit} className="bg-blue-50 p-6 rounded-lg shadow-md max-w-md mx-auto">
@@ -108,16 +108,16 @@ export const ClientRegistrationForm = () => {
         ) : (
           <div className="bg-blue-50 text-blue-900 p-6 rounded-lg shadow-md max-w-md mx-auto">
             <h2 className="text-2xl font-semibold mb-4">{successMessage}</h2>
-            <div className="flex justify-around mt-4">
+            <div className="flex flex-wrap justify-around mt-4">
               <button
                 onClick={() => handleOptionClick('feedback')}
-                className="bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50"
+                className="bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 mb-2"
               >
                 Give Feedback
               </button>
               <button
                 onClick={() => handleOptionClick('history')}
-                className="bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50"
+                className="bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 mb-2"
               >
                 View History
               </button>
