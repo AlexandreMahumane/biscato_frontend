@@ -5,10 +5,8 @@ export const HeaderClient = () => {
   const [showLogout, setShowLogout] = useState(false);
 
   const handleLogoutClick = () => {
-    if (window.confirm("Você realmente deseja sair?")) {
-      localStorage.clear();
-      window.location.href = "/"; // Redireciona para a página inicial
-    }
+    localStorage.clear();
+    window.location.href = "/"; // Redireciona para a página inicial
   };
 
   return (
@@ -21,31 +19,25 @@ export const HeaderClient = () => {
         </div>
 
         <div className="relative">
-  <button
-    onClick={() => setShowLogout(!showLogout)}
-    className="text-white focus:outline-none hover:text-blue-500 transition-all duration-300 ease-in-out"
-    aria-label="User options"
-  >
-    <UserCircle size={22} className="transition-all duration-300 ease-in-out transform hover:scale-105 glow-effect" />
-  </button>
-  {showLogout && (
-    <ul className="absolute right-0 mt-2 bg-blue-300 border border-blue-950 rounded-lg py-2 w-40 glow-effect transition-all duration-300 ease-in-out">
-      <li
-        onClick={handleLogoutClick}
-        className="cursor-pointer px-4 py-2 hover:bg-blue-500 transition-all duration-300 ease-in-out"
-      >
-        Logout
-      </li>
-    </ul>
-  )}
-</div>
-
+          <button
+            onClick={() => setShowLogout(!showLogout)}
+            className="text-white focus:outline-none hover:text-blue-500 transition-all duration-300 ease-in-out"
+            aria-label="User options"
+          >
+            <UserCircle size={32} className="transition-all duration-300 ease-in-out transform hover:scale-105 glow-effect" />
+          </button>
+          {showLogout && (
+            <ul className="absolute right-0 mt-2 bg-blue-300 border border-blue-950 rounded-lg py-2 w-40 glow-effect transition-all duration-300 ease-in-out">
+              <li
+                onClick={handleLogoutClick}
+                className="cursor-pointer px-4 py-2 hover:bg-blue-500 transition-all duration-300 ease-in-out"
+              >
+                Logout
+              </li>
+            </ul>
+          )}
         </div>
-
-        <div className="md:hidden flex items-center">
-          
-        </div>
-      
+      </div>
     </nav>
   );
 };
