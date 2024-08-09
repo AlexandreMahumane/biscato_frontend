@@ -12,7 +12,7 @@ const Dashboard = () => {
         label: 'Novos Freelancers',
         data: [30, 45, 35, 60, 50, 80, 70],
         borderColor: 'rgba(76,193,192,1)', // Cores para o gráfico de linhas
-        backgroundColor: 'rgba(76,193,192,0.2)', // Cor de fundo do gráfico de linhas
+        backgroundColor: 'rgba(76,193,192,0.2)',
         borderWidth: 2,
       },
       {
