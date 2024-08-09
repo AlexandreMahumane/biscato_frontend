@@ -2,7 +2,7 @@ import React from 'react';
 import { GithubLogo,XLogo,YoutubeLogo } from "@phosphor-icons/react";
 import { NavLink, useNavigate } from "react-router-dom";
 
-const Footer = () => {
+export const Footer = () => {
   return (
     <footer className="bg-blue-600 text-white py-4">
       <div className="container mx-auto px-4 text-center grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -126,4 +126,4 @@ const Footer = () => {
   );
 }
 
-export default Footer;
+

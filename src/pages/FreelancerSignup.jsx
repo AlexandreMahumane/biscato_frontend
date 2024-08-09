@@ -1,10 +1,11 @@
-import React, { useState } from 'react';
-import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
-import Header from '../components/header';
-import Footer from '../components/footer';
+import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import Header from "../components/header";
+import { api } from "../apiConfig";
+import { Footer } from "../components/footer";
 
 export const FreelancerRegistrationForm = () => {
+
   const [name, setName] = useState('');
   const [phone, setPhone] = useState('');
   const [documentType, setDocumentType] = useState('');
@@ -13,18 +14,36 @@ export const FreelancerRegistrationForm = () => {
   const [category, setCategory] = useState('');
   const [description, setDescription] = useState('');
   const [successMessage, setSuccessMessage] = useState('');
+
   const [showOptions, setShowOptions] = useState(false);
+  const [categoryList, setCategoryList] = useState([]);
   const navigate = useNavigate();
+
+  useEffect(() => {
+    async function fetchCategories() {
+      try {
+        const response = await api.get("/category");
+        setCategoryList(response.data);
+      } catch (error) {
+        console.error("Erro ao buscar categorias:", error);
+      }
+    }
+
+    fetchCategories();
+  }, []);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('/freelancer', {
+      const response = await api.post("/freelancer", {
         name,
         phone,
+        serviceCategory:category,
+        description,
         documentType,
         documentId,
         password,
+
         category,
         description
       });
@@ -38,14 +57,15 @@ export const FreelancerRegistrationForm = () => {
 
     } catch (error) {
       console.error('Erro ao registrar freelancer', error);
+
     }
   };
 
   const handleOptionClick = (option) => {
-    if (option === 'feedback') {
-      navigate('/feedback');
-    } else if (option === 'history') {
-      navigate('/dashboard');
+    if (option === "feedback") {
+      navigate("/feedback");
+    } else if (option === "history") {
+      navigate("/dashboard");
     }
   };
 
@@ -54,8 +74,10 @@ export const FreelancerRegistrationForm = () => {
       <Header />
       <div className="container mx-auto p-4">
         {!showOptions ? (
+
           <form onSubmit={handleSubmit} className="bg-blue-50 text-blue-900 p-6 rounded-lg shadow-md max-w-md mx-auto">
             <h2 className="text-2xl font-semibold text-blue-900 mb-4 text-center">Freelancer Registration</h2>
+
             <label className="block mb-4">
               <span className="text-blue-700">Name:</span>
               <input
@@ -67,7 +89,9 @@ export const FreelancerRegistrationForm = () => {
               />
             </label>
             <label className="block mb-4">
+
               <span className="text-blue-700">Phone:</span>
+
               <input
                 type="text"
                 value={phone}
@@ -77,6 +101,7 @@ export const FreelancerRegistrationForm = () => {
               />
             </label>
             <label className="block mb-4">
+
               <span className="text-blue-700">Document Type:</span>
               <select
                 value={documentType}
@@ -90,6 +115,7 @@ export const FreelancerRegistrationForm = () => {
             </label>
             <label className="block mb-4">
               <span className="text-blue-700">Document Number:</span>
+
               <input
                 type="text"
                 value={documentId}
@@ -99,7 +125,9 @@ export const FreelancerRegistrationForm = () => {
               />
             </label>
             <label className="block mb-4">
+
               <span className="text-blue-700">Password:</span>
+
               <input
                 type="password"
                 value={password}
@@ -108,31 +136,37 @@ export const FreelancerRegistrationForm = () => {
                 className="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
               />
             </label>
+
             <label className="block mb-4">
               <span className="text-blue-700">Category:</span>
+
               <select
                 id="category"
                 value={category}
                 onChange={(e) => setCategory(e.target.value)}
-                className="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+
+                className="select-category mt-2 w-full"
               >
                 <option value="">Select a category</option>
-                <option value="electrician">Electrician</option>
-                <option value="plumber">Plumber</option>
-                <option value="carpenter">Carpenter</option>
-                <option value="designer">Designer</option>
+                {categoryList.map((element) => (
+                  <option key={element.id} value={element.id}>
+                    {element.name}
+                  </option>
+                ))}
               </select>
-            </label>
-            <label className="block mb-4">
-              <span className="text-blue-700">Description:</span>
+            </div>
+            <div className="mb-4">
+
               <textarea
                 id="description"
                 value={description}
                 onChange={(e) => setDescription(e.target.value)}
                 placeholder="Enter your description..."
+
                 className="border border-gray-300 rounded-md p-2 w-full h-20 resize-none focus:ring-blue-500 focus:border-blue-500"
               ></textarea>
             </label>
+
             <button
               type="submit"
               className="w-full bg-blue-500 hover:bg-blue-700 text-white py-2 px-4 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50"
@@ -145,14 +179,18 @@ export const FreelancerRegistrationForm = () => {
             <h2 className="text-2xl font-semibold mb-4 text-center">{successMessage}</h2>
             <div className="flex flex-col md:flex-row md:justify-around mt-4">
               <button
+
                 onClick={() => handleOptionClick('feedback')}
                 className="bg-blue-500 hover:bg-blue-700 text-white py-2 px-4 rounded-md mb-2 md:mb-0 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50"
+
               >
                 Give Feedback
               </button>
               <button
+
                 onClick={() => handleOptionClick('history')}
                 className="bg-blue-500 hover:bg-blue-700 text-white py-2 px-4 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50"
+
               >
                 View History
               </button>

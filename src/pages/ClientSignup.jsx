@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+
 import Footer from '../components/footer';
+
 import Header from '../components/header';
 
 export const ClientRegistrationForm = () => {
@@ -82,7 +84,9 @@ export const ClientRegistrationForm = () => {
                 className="mt-1 block w-full border-blue-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
               />
             </label>
+
             <label className="block mb-4 flex items-center">
+
               <input
                 type="checkbox"
                 checked={acceptTerms}
