@@ -23,7 +23,7 @@ export const Header = ({ userType }) => {
     e.preventDefault();
     
     try {
-<<<<<<< HEAD
+
       console.log({ identifier, password })
       const response = await api.post('/auth', { identifier, password });
       setSuccessMessage('Login successful');
@@ -36,22 +36,7 @@ export const Header = ({ userType }) => {
     } catch (error) {
       console.error('Error logging in user', error);
       setErrorMessage('Invalid credentials, please try again.'); 
-=======
-      const response = await axios.post('/auth', {
-        identifier,
-        password
-      });
-      setSuccessMessage('Login successfully.');
-      console.log(response.data);
 
-      setTimeout(() => {
-        setShowOptions(true);
-      }, 3000);
-      navigate('/client');
-    } catch (error) {
-      console.error('Error logging in user', error);
-      setErrorMessage('Invalid credentials, please try again.');
->>>>>>> e742b2e31ed6599340352005ad5c6783dac3129f
     }
   };
 
