@@ -133,3 +133,4 @@ export const FreelancerRegistrationForm = () => {
   );
 };
 
+export default FreelancerRegistrationForm;

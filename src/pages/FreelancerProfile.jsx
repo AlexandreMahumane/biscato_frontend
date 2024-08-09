@@ -74,4 +74,4 @@ export const FreelancerProfile = () => {
   );
 };
 
-
+ export default FreelancerProfile

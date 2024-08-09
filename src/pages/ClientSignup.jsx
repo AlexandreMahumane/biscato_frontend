@@ -117,4 +117,4 @@ export const ClientRegistrationForm = () => {
     </>
   );
 };
-
+ export default ClientRegistrationForm;
