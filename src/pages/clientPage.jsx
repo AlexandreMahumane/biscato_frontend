@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Modal from 'react-modal';
 import { Footer } from '../components/footer';
-import Header from '../components/header';
+import {Header} from '../components/header';
 
 Modal.setAppElement('#root');
 
