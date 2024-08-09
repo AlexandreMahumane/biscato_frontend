@@ -1,38 +1,35 @@
-import pic2 from "../../../public/pic2.jpg";
-import photo1 from "../../../public/photo1.jpg";
-import { PhotoSection } from "./photoSection";
-import { TextInfo } from "./textInfo";
+import React from "react";
+
 export const AboutTheApp = () => {
   return (
-    <div className="flex flex-col items-center">
-      <div className="flex flex-col items-center justify-center space-y-20 mt-20">
-        <div className="flex sm:flex-col sm:text-center sm:space-x-0 space-x-14">
-          <div className="flex sm:flex-col sm:w-full sm:h-full flex-wrap h-24 w-96">
-            <h1 className="text-6xl font-bold"> Quem somos nós??</h1>
-            <p>
-              Somos uma empresa especializada em trazer Soluções inovadoras para
-              mercado de trabalho nacional.
-            </p>
-          </div>
-          <img src={pic2} alt="worker pic" className="rounded-lg w-full h-96" />
-        </div>
-      </div>
-
-      <section className="bg-gray-100 sm:mt-5 text-center rounded-3xl h-fit p-10">
-        <div className="w-full flex-col flex items-center mb-10 justify-center">
-          <h3 className="font-bold mb-10">qual e o nosso compromisso?</h3>
-          <p className="flex flex-wrap text-xl w-72">
-            Procura um trabalhor? Se cadastre como cliente e faça parte do grupo
-            de pessoas que buscam soluções rapidas para resolver seus problemas
-            com um freelancer, proximo de si! cadastre-se aqui!
+    <div className="flex flex-col items-center px-4 py-8">
+      {/* Introdução */}
+      <section className="flex flex-col items-center justify-center space-y-10 mt-10 text-center">
+        <div className="flex flex-col space-y-4 max-w-4xl">
+          <h1 className="text-6xl font-bold leading-tight">
+            Quem somos nós?
+          </h1>
+          <p className="text-lg">
+            Somos uma empresa especializada em trazer soluções inovadoras para
+            o mercado de trabalho nacional.
           </p>
         </div>
+      </section>
 
-        <PhotoSection />
-        <TextInfo />
-
-        <img src={photo1} className="opacity-50" alt="" />
+      {/* Compromisso */}
+      <section className="w-full max-w-3xl flex flex-col items-center mb-12 text-center">
+        <h3 className="text-2xl font-bold mb-4">
+          Qual é o nosso compromisso?
+        </h3>
+        <p className="text-xl">
+          Está procurando um trabalhador? Cadastre-se como cliente e junte-se
+          ao grupo de pessoas que buscam soluções rápidas para resolver seus
+          problemas com um freelancer próximo de você! 
+          <a href="/signup" className="text-blue-500 underline ml-2">Cadastre-se agora mesmo!</a>
+        </p>
       </section>
     </div>
   );
 };
+
+export default AboutTheApp;

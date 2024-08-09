@@ -3,8 +3,8 @@ import React, { useState } from 'react';
 
 
 import { UserCircle } from "@phosphor-icons/react";
-import { Header } from '../components/header';
-import { Footer } from '../components/footer';
+import HeaderClient from '../components/header/headerClient';
+import Footer from '../components/footer';
 
 
 const FreelancerPage = () => {
@@ -33,7 +33,7 @@ const FreelancerPage = () => {
 
   return (
     <div>
-      <Header />
+      <HeaderClient />
       <main className="p-4 flex flex-col lg:flex-row gap-8">
         
         <div className="flex-1 flex flex-col gap-8">
@@ -103,7 +103,7 @@ const FreelancerPage = () => {
           </div>
         </div>
       </main>
-      <Footer />
+      <Footer/>
 
       <ModalComponent 
         isOpen={isModalOpen} 

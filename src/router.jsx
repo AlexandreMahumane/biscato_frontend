@@ -2,13 +2,11 @@
 import { createBrowserRouter } from 'react-router-dom';
 import Main from './pages/main';
 import { ClientRegistrationForm } from './pages/ClientSignup';
-import { SearchFreelancer } from './pages/SearchFreelancer';
-import { FreelancerProfile } from './pages/FreelancerProfile';
 import { FreelancerRegistrationForm } from './pages/FreelancerSignup';
-import ClientPage from './pages/clientPage';
 import ClientMain from './pages/ClientMain';
 import OtpPage from './pages/OtpPage';
 import LocationPage from './pages/LocationPage';
+import Dashboard from './components/Dashboard';
 
 
 
@@ -18,7 +16,7 @@ export const route = createBrowserRouter([
      element: <Main/>
     },
     {
-     path: "/clientmain",
+     path: "/client",
      element: <ClientMain/>
     },
     
@@ -27,13 +25,11 @@ export const route = createBrowserRouter([
      element: <ClientRegistrationForm/>
     },
     {
-    path: "/SearchFreelancer",
-     element: <SearchFreelancer/>
+     path: "/adm",
+     element: <Dashboard/>
     },
-    {
-    path: "/freelancerProfile",
-    element: <FreelancerProfile/>
-    },
+    
+    
     {
 
     path: "/signup/freelancer",

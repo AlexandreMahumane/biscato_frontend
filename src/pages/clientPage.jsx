@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Modal from 'react-modal';
 import { Footer } from '../components/footer';
-import {Header} from '../components/header';
+import HeaderClient from '../components/header/headerClient';
 
 Modal.setAppElement('#root');
 
@@ -38,7 +38,7 @@ const ClientPage = () => {
 
   return (
     <>
-      <Header/>
+      <HeaderClient/>
       <div className="container mx-auto p-4">
         <h1 className="text-3xl font-semibold text-gray-800 mb-4">Welcome to Your Client Dashboard</h1>
         <p>Your registration was successful. Explore your dashboard to get started.</p>
@@ -57,17 +57,13 @@ const ClientPage = () => {
             >
               View History
             </button>
-          </div>                     
-        </div>
-      </div>
-      <Footer />
-
-      <Modal
+          </div>   
+            <Modal
         isOpen={modalIsOpen}
         onRequestClose={closeModal}
         contentLabel="Information"
-        className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50"
-        overlayClassName="fixed inset-0 bg-black bg-opacity-50"
+        className=" flex items-center justify-center bg-black bg-opacity-50"
+        overlayClassName="inset-0 bg-black bg-opacity-50"
       >
         <div className="bg-white p-6 rounded-lg max-w-md mx-auto">
           <h2 className="text-xl font-semibold mb-4">Notification</h2>
@@ -79,9 +75,20 @@ const ClientPage = () => {
             Close
           </button>
         </div>
-      </Modal>
+      </Modal>       
+
+        </div>
+
+     
+      </div>
+
+
+      <Footer />
+
+      
     </>
   );
 };
 
 export default ClientPage;
+
