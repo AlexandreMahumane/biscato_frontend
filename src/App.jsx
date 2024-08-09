@@ -1,14 +1,17 @@
-import Dashboard from "./components/Dashboard"
-import { Main } from "./pages/main"
+
+import { RouterProvider } from 'react-router-dom';
+import { route } from './router';
+
+
 
 function App() {
-
-
   return (
-    <>
-      <Dashboard/>
-    </>
-  )
+
+    <RouterProvider router={route} />
+  );
+
 }
 
-export default App
+export default App;
+
+

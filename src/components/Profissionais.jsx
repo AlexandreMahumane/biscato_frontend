@@ -1,4 +1,5 @@
 import React from 'react';
+
 import { ResponsivePieCanvas } from '@nivo/pie';
 import './heroSection/index'; 
 
@@ -15,10 +16,12 @@ export const Profissionais = () => {
         { id: "Tecnico de informatica", label: "Tecnico de Informática", value: 473, color: "hsl(25, 70%, 50%)" },
         { id: "Polidor de parede", label: "Polidor de Parede", value: 171, color: "hsl(190, 70%, 50%)" },
         { id: "Florista", label: "Florista", value: 457, color: "hsl(7, 70%, 50%)" },
+
         { id: "Scala", label: "Scala", value: 247, color: "hsl(314, 70%, 50%)" },
         { id: "Hack", label: "Hack", value: 337, color: "hsl(283, 70%, 50%)" },
         { id: "Pintor", label: "Pintor", value: 311, color: "hsl(174, 70%, 50%)" },
         { id: "Python", label: "Python", value: 380, color: "hsl(116, 70%, 50%)" },
+
     ];
 
     return (
@@ -27,6 +30,7 @@ export const Profissionais = () => {
                 <ResponsivePieCanvas
                     data={data}
                     margin={{ top: 40, right: 80, bottom: 40, left: 80 }}
+
                     innerRadius={0.5}
                     padAngle={0.7}
                     cornerRadius={3}
@@ -70,6 +74,7 @@ export const Profissionais = () => {
                         { match: { id: 'Polidor de parede' }, id: 'lines' },
                         { match: { id: 'Pintor' }, id: 'lines' },
                         { match: { id: 'Florista' }, id: 'lines' },
+
                     ]}
                     legends={[
                         {
@@ -85,6 +90,7 @@ export const Profissionais = () => {
                             itemDirection: 'left-to-right',
                             itemOpacity: 1,
                             symbolSize: 20,
+
                             symbolShape: 'circle'
                         }
                     ]}
@@ -92,4 +98,6 @@ export const Profissionais = () => {
             </div>
         </div>
     );
+
 };
+

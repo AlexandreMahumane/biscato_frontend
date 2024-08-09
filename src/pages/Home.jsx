@@ -1,8 +1,9 @@
-import { Header } from "../components/header";
-import pic1 from "../../public/pic1.jpg"
+import pic1 from "../../public/pic1.jpg";
+import Footer from "../components/footer";
+import Header from "../components/header";
 import HeroSection from "../components/heroSection";
 import { AboutTheApp } from "../components/info";
-import { Footer } from "../components/footer";
+
 export const Main = () =>{
     return(
         <div className="sm:p-2">
@@ -10,7 +11,8 @@ export const Main = () =>{
             <HeroSection/>
             <AboutTheApp/>
             <Footer/>
-            
         </div>
     );
 }
+
+export default Main
