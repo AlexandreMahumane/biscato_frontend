@@ -25,17 +25,17 @@ const Header = ({ userType }) => {
       setTimeout(() => {
         setShowOptions(true);
       }, 3000);
-      navigate('/client')
+      navigate('/client');
     } catch (error) {
       console.error('Error Login user', error);
     }
   };
+
   const handleLoginClick = () => {
     setShowLogin(true);
     setShowSignup(false);
     toggleMenu();
   };
-
 
   if (userType === "client" || userType === "freelancer" || userType === "admin") {
     return <HeaderClient />;
@@ -51,40 +51,45 @@ const Header = ({ userType }) => {
       <div className="container mx-auto flex justify-between items-center px-4">
         <div className="flex items-center">
           <div className="border-2 border-gray-300 rounded-lg px-2 flex items-center">
-            <p className="text-lg px-4 hover:text-blue-950 cursor-pointer">Biscato</p>
-          </div>
-
-          <div className="ml-4 md:hidden">
-            <button
-              className="text-white focus:outline-none hover:text-blue-950"
-              onClick={toggleMenu}
-            >
-              Menu
-            </button>
+            <h1 className="text-2xl font-bold px-4 py-2 transition-all duration-300 ease-in-out transform hover:text-blue-500 hover:scale-105 glow-effect">
+              BISCATO
+            </h1>
           </div>
         </div>
 
         <div className="hidden md:flex flex-grow justify-center items-center">
-          <NavLink exact to="/" className="mr-4 text-lg hover:text-blue-950" activeClassName="text-blue-950">
+          <NavLink
+            exact
+            to="/"
+            className="mr-4 text-lg transition-all duration-300 ease-in-out transform hover:text-blue-500 hover:scale-105 glow-effect"
+            activeClassName="text-blue-950"
+          >
             Home
           </NavLink>
-          <NavLink to="/signup/client" className="mr-4 text-lg hover:text-blue-950" activeClassName="text-blue-950">
+          <NavLink
+            to="/signup/client"
+            className="mr-4 text-lg transition-all duration-300 ease-in-out transform hover:text-blue-500 hover:scale-105 glow-effect"
+            activeClassName="text-blue-950"
+          >
             Encontrar Freelancer
           </NavLink>
-          <NavLink to="/signup/freelancer" className="mr-4 text-lg hover:text-blue-950" activeClassName="text-blue-950">
+          <NavLink
+            to="/signup/freelancer"
+            className="mr-4 text-lg transition-all duration-300 ease-in-out transform hover:text-blue-500 hover:scale-105 glow-effect"
+            activeClassName="text-blue-950"
+          >
             Encontrar Trabalho
           </NavLink>
         </div>
 
         <div className="flex items-center">
-        <div className="ml-4">
+          <div className="ml-4">
             <button
               onClick={handleLoginClick}
               className="bg-blue-700 hover:bg-blue-800 text-white px-4 py-2 rounded-lg"
             >
               Login
             </button>
-
           </div>
 
           <div className="md:hidden">
@@ -101,13 +106,26 @@ const Header = ({ userType }) => {
       {isMenuOpen && (
         <div className="md:hidden bg-blue-600 text-white py-2 px-4">
           <div className="flex flex-col gap-2">
-            <NavLink exact to="/" className="mr-4 text-lg hover:text-blue-950" activeClassName="text-blue-950">
+            <NavLink
+              exact
+              to="/"
+              className="mr-4 text-lg transition-all duration-300 ease-in-out transform hover:text-blue-500 hover:scale-105 glow-effect"
+              activeClassName="text-blue-950"
+            >
               Home
             </NavLink>
-            <NavLink to="/signup/client" className="mr-4 text-lg hover:text-blue-950" activeClassName="text-blue-950">
+            <NavLink
+              to="/signup/client"
+              className="mr-4 text-lg transition-all duration-300 ease-in-out transform hover:text-blue-500 hover:scale-105 glow-effect"
+              activeClassName="text-blue-950"
+            >
               Encontrar Freelancer
             </NavLink>
-            <NavLink to="/signup/freelancer" className="mr-4 text-lg hover:text-blue-950" activeClassName="text-blue-950">
+            <NavLink
+              to="/signup/freelancer"
+              className="mr-4 text-lg transition-all duration-300 ease-in-out transform hover:text-blue-500 hover:scale-105 glow-effect"
+              activeClassName="text-blue-950"
+            >
               Encontrar Trabalho
             </NavLink>
           </div>
@@ -161,7 +179,6 @@ const Header = ({ userType }) => {
           </div>
         </div>
       )}
-
     </nav>
   );
 };
