@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import axios from 'axios';
 import HeaderClient from "./headerClient";
+import { api } from "../../apiConfig";
 
 
 export const Header = ({ userType }) => {
@@ -20,16 +21,20 @@ export const Header = ({ userType }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    
     try {
-      const response = await axios.post('/auth', { identifier, password });
+      console.log({ identifier, password })
+      const response = await api.post('/auth', { identifier, password });
       setSuccessMessage('Login successful');
-      setErrorMessage(''); // Limpar mensagem de erro se o login for bem-sucedido
+      setErrorMessage(''); 
 
-      // Redirecionar após sucesso
+      
+      console.log(response.data)
+
       navigate('/client');
     } catch (error) {
       console.error('Error logging in user', error);
-      setErrorMessage('Invalid credentials, please try again.'); // Definir mensagem de erro
+      setErrorMessage('Invalid credentials, please try again.'); 
     }
   };
 

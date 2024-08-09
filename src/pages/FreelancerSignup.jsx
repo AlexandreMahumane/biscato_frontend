@@ -3,6 +3,7 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { Footer } from '../components/footer';
 import Header from '../components/header';
+import { api } from '../apiConfig';
 
 export const FreelancerRegistrationForm = () => {
   const [name, setName] = useState('');
@@ -17,7 +18,7 @@ export const FreelancerRegistrationForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('/freelancer', {
+      const response = await api.post('/freelancer', {
         name,
         phone,
         documentType,
@@ -76,8 +77,8 @@ export const FreelancerRegistrationForm = () => {
             <label className="block mb-4">
               <span className="text-gray-700">Tipo de Documento:</span>
               <select className="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" name="" id="">
-                <option value="id">BI</option>
-                <option value="passport">Passaporte</option>
+                <option onClick={(e) => setDocumentType(e.target.value)} value="id">BI</option>
+                <option onClick={(e) => setDocumentType(e.target.value)} value="passport">Passaporte</option>
               </select>
 
             </label>

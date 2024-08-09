@@ -3,6 +3,7 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { Footer } from '../components/footer/index';
 import HeaderClient from '../components/header/headerClient';
+import { api } from '../apiConfig';
 
 
 
@@ -26,12 +27,10 @@ export const ClientRegistrationForm = () => {
     }
     setIsSubmitting(true);
     try {
-      const response = await axios.post('/user', {
+      const response = await api.post('/user', {
         name,
         phone,
         password,
-        location,
-        idCard
       });
       console.log(response.data);
 
