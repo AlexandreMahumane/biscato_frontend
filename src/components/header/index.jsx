@@ -4,7 +4,7 @@ import axios from 'axios';
 import HeaderClient from "./headerClient";
 
 
-const Header = ({ userType }) => {
+export const Header = ({ userType }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [showLogin, setShowLogin] = useState(false);
   const [showSignup, setShowSignup] = useState(false);
