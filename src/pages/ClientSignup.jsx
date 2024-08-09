@@ -2,7 +2,8 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { Footer } from '../components/footer/index';
-import HeaderClient from '../components/header/HeaderClient';
+import HeaderClient from '../components/header/headerClient';
+
 
 
 export const ClientRegistrationForm = () => {

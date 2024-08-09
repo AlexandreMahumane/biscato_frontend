@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import axios from 'axios';
-import HeaderClient from "./HeaderClient";
+import HeaderClient from "./headerClient";
+
 
 const Header = ({ userType }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);

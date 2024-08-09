@@ -1,7 +1,7 @@
 import { UserCircle } from "@phosphor-icons/react";
 import React, { useState } from "react";
 
-const HeaderClient = () => {
+export const HeaderClient = () => {
   const [showLogout, setShowLogout] = useState(false);
 
   const handleLogoutClick = () => {
